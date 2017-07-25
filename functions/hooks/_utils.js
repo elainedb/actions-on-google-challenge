@@ -1,5 +1,5 @@
 'use strict';
 
-exports.getRandomSentence = function(sentences) {
-    return sentences[Math.floor(Math.random() * images.length)];
-}
+exports.randomFromArray = function (array) {
+    return array[Math.floor(Math.random() * array.length)];
+};

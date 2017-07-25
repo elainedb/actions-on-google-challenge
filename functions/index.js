@@ -12,15 +12,14 @@
 // limitations under the License.
 
 'use strict';
+
 const utils = require('./hooks/_utils');
-const welcome = require('./hooks/welcome');
 
 process.env.DEBUG = 'actions-on-google:*';
 const App = require('actions-on-google').ApiAiApp;
 const functions = require('firebase-functions');
 
-// API.AI actions
-const WELCOME = 'input.welcome';
+const Welcome = require('./hooks/welcome');
 
 exports.babysitter = functions.https.onRequest((request, response) => {
     const app = new App({request, response});
@@ -28,7 +27,9 @@ exports.babysitter = functions.https.onRequest((request, response) => {
     console.log('Request body: ' + JSON.stringify(request.body));
 
     let actionMap = new Map();
-    actionMap.set(WELCOME, welcome.welcome);
+    [
+        new Welcome()
+    ].forEach(i => i.register(actionMap));
 
     app.handleRequest(actionMap);
 });
