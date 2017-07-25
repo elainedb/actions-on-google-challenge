@@ -1,3 +1,1 @@
 # actions-on-google-challenge
-
-#
