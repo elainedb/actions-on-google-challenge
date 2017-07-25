@@ -12,41 +12,15 @@
 // limitations under the License.
 
 'use strict';
-const utils = require('../../actions-on-google-challenge/functions/hooks/_utils');
-const cats = require('../../actions-on-google-challenge/functions/hooks/cats');
-const welcome = require('../../actions-on-google-challenge/functions/hooks/welcome');
-const google = require('../../actions-on-google-challenge/functions/hooks/google');
+const utils = require('./hooks/_utils');
+const welcome = require('./hooks/welcome');
 
 process.env.DEBUG = 'actions-on-google:*';
 const App = require('actions-on-google').ApiAiApp;
 const functions = require('firebase-functions');
 
 // API.AI actions
-const UNRECOGNIZED_DEEP_LINK = 'deeplink.unknown';
-const TELL_FACT = 'tell.fact';
-const TELL_CAT_FACT = 'tell.cat.fact';
 const WELCOME = 'input.welcome';
-const PERMISSION_CONFIRMATION = 'permission.confirmation';
-
-
-// Greet the user and direct them to next turn
-function unhandledDeepLinks(app) {
-    if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
-        app.ask(app.buildRichResponse()
-            .addSimpleResponse(`Welcome to Facts about Google! I'd really rather \
-not talk about ${app.getRawInput()}. Wouldn't you rather talk about \
-Google? I can tell you about Google's history or its headquarters. \
-Which do you want to hear about?`)
-            .addSuggestions(['History', 'Headquarters']));
-    } else {
-        app.ask(`Welcome to Facts about Google! I'd really rather \
-not talk about ${app.getRawInput()}. \
-Wouldn't you rather talk about Google? I can tell you about \
-Google's history or its headquarters. Which do you want to hear about?`,
-            utils.NO_INPUTS);
-    }
-}
-
 
 exports.babysitter = functions.https.onRequest((request, response) => {
     const app = new App({request, response});
@@ -55,12 +29,6 @@ exports.babysitter = functions.https.onRequest((request, response) => {
 
     let actionMap = new Map();
     actionMap.set(WELCOME, welcome.welcome);
-    actionMap.set(PERMISSION_CONFIRMATION, welcome.confirm);
-
-    actionMap.set(UNRECOGNIZED_DEEP_LINK, unhandledDeepLinks);
-    actionMap.set(TELL_FACT, google.tellFact);
-    actionMap.set(TELL_CAT_FACT, cats.tellCatFact);
 
     app.handleRequest(actionMap);
-
 });
