@@ -4,7 +4,9 @@ const SimpleIntent = require('./simpleIntent');
 
 const utils = require('./_utils');
 
-const INTENT_ID = 'input.welcome';
+const INTENT_ID = 'auntie.game.animal';
+
+const ENTITY_ANIMAL = "animal";
 
 const SENTENCES = [
     "Hi little one! I am your cool auntie, let's play together :)",
@@ -12,15 +14,20 @@ const SENTENCES = [
     "Hi again, I hope you are doing great.",
 ];
 
-class Welcome extends SimpleIntent {
+class AnimalSoundsAnswer extends SimpleIntent {
 
     constructor() {
         super(INTENT_ID);
     }
 
     trigger(app) {
-        app.ask(utils.randomFromArray(SENTENCES));
+        if (app.data.answer === app.getArgument(ENTITY_ANIMAL)) {
+            app.ask("yoohoo!");
+        } else {
+            app.ask("too bad");
+        }
+        
     }
 }
 
-module.exports = Welcome;
+module.exports = AnimalSoundsAnswer;
