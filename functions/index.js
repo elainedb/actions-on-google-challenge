@@ -1,18 +1,4 @@
-// Copyright 2016, Google, Inc.
-// Licensed under the Apache License, Version 2.0 (the 'License');
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//    http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an 'AS IS' BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 'use strict';
-
 const utils = require('./hooks/_utils');
 
 process.env.DEBUG = 'actions-on-google:*';
@@ -20,7 +6,8 @@ const App = require('actions-on-google').ApiAiApp;
 const functions = require('firebase-functions');
 
 const Welcome = require('./hooks/welcome');
-const AnimalGame = require('./hooks/games/animalGame');
+const ChooseGame = require('./hooks/chooseGame');
+const AnimalSoundsAnswer = require('./hooks/animalSoundsAnswer');
 
 exports.babysitter = functions.https.onRequest((request, response) => {
     const app = new App({request, response});
@@ -30,7 +17,8 @@ exports.babysitter = functions.https.onRequest((request, response) => {
     let actionMap = new Map();
     [
         new Welcome(),
-        new AnimalGame()
+        new ChooseGame(),
+        new AnimalSoundsAnswer()
     ].forEach(i => i.register(actionMap));
 
     app.handleRequest(actionMap);

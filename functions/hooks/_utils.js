@@ -1,21 +1,41 @@
 'use strict';
 
-/**
- * Pick a random element from an array. The source array is not modified unless removePicked is true, then
- * the picked element is removed from source array
- *
- * @param array {[]} source array
- * @param removePicked {boolean=}
- * @return {*} picked element on null if array is null or empty
- */
-exports.randomFromArray = function (array, removePicked) {
-    if (!array || array.length === 0) {
-        return null;
-    }
-    const index = Math.floor(Math.random() * array.length);
-    const picked = array[index];
-    if (removePicked) {
-        array.splice(index, 1);
-    }
-    return picked;
+exports.randomFromArray = function (array) {
+    return array[Math.floor(Math.random() * array.length)];
 };
+
+exports.randomIndex = function (array) {
+    let index = (Math.random() * (array - 1)).toFixed();
+    return parseInt(index, 10);
+}
+
+exports.getRandomAnswer = function (app, answers, answerSounds) {
+    if (answers < 0) {
+            return null;
+        }
+        let randomIndex = (Math.random() * (answers.size - 1)).toFixed();
+        let randomAswerIndex = parseInt(randomIndex, 10);
+        // let randomAswerIndex = 0;
+        let counter = 0;
+        let randomAnswer = '';
+        let randomAnswerSound = '';
+        for (let answer of answers.values()) {
+            if (counter === randomAswerIndex) {
+                randomAnswer = answer;
+                break;
+            }
+            counter++;
+        }
+
+        for (let answerSound of answerSounds.values()) {
+            if (counter === randomAswerIndex) {
+                randomAnswerSound = answerSound;
+                break;
+            }
+            counter++;
+        }
+
+        app.data.answer = randomAnswer;
+        answers.delete(randomAnswer);
+        return randomAnswer + `<audio src="${randomAnswerSound}"></audio>`;
+}
