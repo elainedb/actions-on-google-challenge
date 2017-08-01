@@ -41,10 +41,10 @@ class Welcome extends SimpleIntent {
     }
 
     trigger(app) {
-        app.setContext(CONTEXT_CHOOSE_GAME, DEFAULT_LIFESPAN, {});
         let welcomeResponse = utils.randomFromArray(WELCOME_SENTENCES);
         let chooseGameResponse = utils.randomFromArray(CHOOSE_GAME_SENTENCES);
 
+        app.setContext(CONTEXT_CHOOSE_GAME, DEFAULT_LIFESPAN, {});
         if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
             let richResponse = app.buildRichResponse()
                 .addSimpleResponse(`<speak>${welcomeResponse} ${chooseGameResponse}</speak>`)
@@ -58,7 +58,7 @@ class Welcome extends SimpleIntent {
                 //         .setImage(image[0], image[1])
                 //         .addButton('GOOOOOGLE_2', 'https://www.google.com/about/'))
                 .addSuggestions(GAME_SUGGESTIONS);
-            app.ask(richResponse, NO_INPUT_SUGGESTIONS);
+            app.ask(richResponse);
         } else {
             app.ask(`<speak>${welcomeResponse} ${chooseGameResponse}</speak>`, NO_INPUT_SUGGESTIONS);
         }
