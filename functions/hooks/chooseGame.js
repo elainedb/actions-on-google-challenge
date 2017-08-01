@@ -57,7 +57,7 @@ class ChooseGame extends SimpleIntent {
         if (app.getArgument(ENTITY_GAME) === ENTITY_GAME_ANIMAL_SOUNDS) {
             // possible answers
             let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : ANIMALS;
-            if (answers.size == 0) {
+            if (answers.size === 0) {
                 app.data.animalAnswers = ANIMALS;
             }
 

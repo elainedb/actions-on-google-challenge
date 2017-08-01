@@ -9,6 +9,8 @@ const Welcome = require('./hooks/welcome');
 const ChooseGame = require('./hooks/chooseGame');
 const SoundsAnswer = require('./hooks/animals/soundsAnswer');
 
+console.log('coucou before function');
+
 exports.babysitter = functions.https.onRequest((request, response) => {
 
     const app = new App({request, response});
