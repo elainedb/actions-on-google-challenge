@@ -1,6 +1,6 @@
 {
-  "name": "facts-about-google",
-  "description": "Fun way to learn more about Google!",
+  "name": "nany",
+  "description": "Nany is here to play with children",
   "version": "0.0.1",
   "private": true,
   "license": "Apache Version 2.0",
@@ -11,7 +11,8 @@
   "scripts": {
     "lint": "semistandard --fix \"**/*.js\"",
     "start": "firebase serve --only functions",
-    "deploy": "firebase deploy --only functions"
+    "deploy": "git commit -am 'new changes'; firebase deploy --only functions",
+    "push": "git pull origin master; git push origin master;"
   },
   "dependencies": {
     "actions-on-google": "^1.0.0",
