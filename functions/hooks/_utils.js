@@ -1,4 +1,6 @@
 'use strict';
+exports.DEFAULT_LIFESPAN = 5;
+
 
 exports.randomFromArray = function (array) {
     return array[Math.floor(Math.random() * array.length)];
