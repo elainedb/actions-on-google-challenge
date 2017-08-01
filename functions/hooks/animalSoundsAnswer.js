@@ -5,11 +5,11 @@ const SimpleIntent = require('./simpleIntent');
 
 const utils = require('./_utils');
 
-const INTENT_ID = 'auntie.game.animal';
+const INTENT_ID = 'intent.auntie.game.animal';
 
 const ENTITY_ANIMAL = "animal";
 const ENTITY_GAME_ANIMAL_SOUNDS = "animal sounds";
-const CONTEXT_ANIMAL_SOUNDS = "game_animal";
+const CONTEXT_ANIMAL_SOUNDS = "context_game_animal";
 
 
 class AnimalSoundsAnswer extends SimpleIntent {

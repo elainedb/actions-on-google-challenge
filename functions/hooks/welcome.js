@@ -4,9 +4,9 @@ const SimpleIntent = require('./simpleIntent');
 
 const utils = require('./_utils');
 
-const INTENT_ID = 'input.welcome';
+const INTENT_ID = 'intent.input.welcome';
 
-const CONTEXT_CHOOSE_GAME = "choose_game";
+const CONTEXT_CHOOSE_GAME = "context_choose_game";
 const DEFAULT_LIFESPAN = 5;
 
 const WELCOME_SENTENCES = [

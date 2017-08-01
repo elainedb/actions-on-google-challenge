@@ -4,7 +4,7 @@ const SimpleIntent = require('./simpleIntent');
 
 const utils = require('./_utils');
 
-const INTENT_ID = 'auntie.choosegame';
+const INTENT_ID = 'intent.auntie.choosegame';
 
 const DEFAULT_LIFESPAN = 5;
 
@@ -12,7 +12,7 @@ const ENTITY_GAME = "game";
 
 // ANIMAL SOUNDS
 const ENTITY_GAME_ANIMAL_SOUNDS = "animal sounds";
-const CONTEXT_ANIMAL_SOUNDS = "game_animal";
+const CONTEXT_ANIMAL_SOUNDS = "context_game_animal";
 
 const ENTITY_DOG = "dog";
 const ENTITY_CAT = "cat";
@@ -75,7 +75,7 @@ class ChooseGame extends SimpleIntent {
             app.setContext(CONTEXT_ANIMAL_SOUNDS, DEFAULT_LIFESPAN, {});
             app.ask(`<speak>${intro} ${question} ${utils.getRandomAnswer(app, answers, ANIMAL_SOUNDS_SRC)}</speak>`);
         } else {
-            app.tell('you said ' + app.getArgument(ENTITY_GAME));
+            app.ask('entity_game, you should not be here... you said ' + app.getArgument(ENTITY_GAME));
         }
     }
 }
