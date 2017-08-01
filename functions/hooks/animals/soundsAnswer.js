@@ -1,8 +1,7 @@
 'use strict';
 
-const SimpleIntent = require('./simpleIntent');
-
-const utils = require('./_utils');
+const SimpleIntent = require('../shared/simpleIntent');
+const utils = require('../shared/_utils');
 
 const INTENT_ID = 'auntie.game.animal';
 
@@ -14,7 +13,7 @@ const SENTENCES = [
     "Hi again, I hope you are doing great.",
 ];
 
-class AnimalSoundsAnswer extends SimpleIntent {
+class SoundsAnswer extends SimpleIntent {
 
     constructor() {
         super(INTENT_ID);
@@ -30,4 +29,4 @@ class AnimalSoundsAnswer extends SimpleIntent {
     }
 }
 
-module.exports = AnimalSoundsAnswer;
+module.exports = SoundsAnswer;
