@@ -7,7 +7,7 @@ exports.randomFromArray = function (array) {
 exports.randomIndex = function (array) {
     let index = (Math.random() * (array - 1)).toFixed();
     return parseInt(index, 10);
-}
+};
 
 exports.getRandomAnswer = function (app, answers, answerSounds) {
     if (answers < 0) {
@@ -39,4 +39,4 @@ exports.getRandomAnswer = function (app, answers, answerSounds) {
         app.data.answer = randomAnswer;
         answers.delete(randomAnswer);
         return randomAnswer + `<audio src="${randomAnswerSound}"></audio>`;
-}
+};

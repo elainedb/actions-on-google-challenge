@@ -6,10 +6,21 @@ const utils = require('./_utils');
 
 const INTENT_ID = 'input.welcome';
 
-const SENTENCES = [
-    "Hi little one! I am your cool auntie, let's play together :)",
+const CONTEXT_CHOOSE_GAME = "choose_game";
+const DEFAULT_LIFESPAN = 5;
+
+const WELCOME_SENTENCES = [
+    "Hi little one! I am your cool auntie.",
     "Hello there, glad to hear you.",
     "Hi again, I hope you are doing great.",
+];
+
+const CHOOSE_GAME_SENTENCES = [
+    "What do you want to do? Play the animal sounds? Sing a song? Hear a story?",
+    "Let's play together! You can choose between: " +
+    "<p> The animal sounds </p>" +
+    "<p> Sing a song </p>" +
+    "<p> Hear a story </p>"
 ];
 
 class Welcome extends SimpleIntent {
@@ -19,7 +30,8 @@ class Welcome extends SimpleIntent {
     }
 
     trigger(app) {
-        app.ask(utils.randomFromArray(SENTENCES));
+        app.setContext(CONTEXT_CHOOSE_GAME, DEFAULT_LIFESPAN, {});
+        app.ask(`<speak>${utils.randomFromArray(WELCOME_SENTENCES)} ${utils.randomFromArray(CHOOSE_GAME_SENTENCES)}</speak>`);
     }
 }
 
