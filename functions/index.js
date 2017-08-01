@@ -23,8 +23,6 @@ const Welcome = require('./hooks/welcome');
 const ChooseGame = require('./hooks/chooseGame');
 const AnimalSoundsAnswer = require('./hooks/animalSoundsAnswer');
 
-console.log('coucou before function');
-
 exports.babysitter = functions.https.onRequest((request, response) => {
     const app = new App({request, response});
     console.log('Request headers: ' + JSON.stringify(request.headers));
