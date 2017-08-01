@@ -19,7 +19,7 @@ const ENTITY_MONKEY = "monkey";
 const ENTITY_ELEPHANT = "elephant";
 const ANIMALS = new Set([ENTITY_DOG, ENTITY_CAT, ENTITY_MONKEY, ENTITY_ELEPHANT]);
 const ANIMAL_SOUNDS_SRC = new Set([
-                            'https://firebasestorage.googleapis.com/v0/b/project-2252662783422070807.appspot.com/o/sounds%2Fanimals%2Fdog%2Fbark.mp3?alt=media&token=bf21caae-d4ff-439b-9f45-975597e62970',
+                            'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/animals/dog/bark.mp3',
                             'https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg',
                             // 'http://www.freesoundeffects.com/mp3_89451.mp3',
                             'http://www.freesoundeffects.com/mp3_466215.mp3',
@@ -58,6 +58,9 @@ class ChooseGame extends SimpleIntent {
         if (app.getArgument(ENTITY_GAME) === ENTITY_GAME_ANIMAL_SOUNDS) {
             // possible answers
             let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : ANIMALS;
+            if (answers.size == 0) {
+                app.data.animalAnswers = ANIMALS;
+            }
 
             // question
             let intro = utils.randomFromArray(SENTENCES) + app.getArgument(ENTITY_GAME) + ". ";

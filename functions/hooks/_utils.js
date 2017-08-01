@@ -27,6 +27,7 @@ exports.getRandomAnswer = function (app, answers, answerSounds) {
             counter++;
         }
 
+        counter = 0;
         for (let answerSound of answerSounds.values()) {
             if (counter === randomAswerIndex) {
                 randomAnswerSound = answerSound;
