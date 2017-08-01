@@ -1,13 +1,56 @@
 'use strict';
 exports.DEFAULT_LIFESPAN = 5;
 
-exports.randomFromArray = function (array) {
-    return array[Math.floor(Math.random() * array.length)];
+/**
+ * Pick a random element from an array. The source array is not modified unless removePicked is true, then
+ * the picked element is removed from source array
+ *
+ * @param array {[]} source array
+ * @param removePicked {boolean=}
+ * @return {*} picked element on null if array is null or empty
+ */
+exports.randomFromArray = function (array, removePicked) {
+    if (!array || array.length === 0) {
+        return null;
+    }
+    const index = Math.floor(Math.random() * array.length);
+    const picked = array[index];
+    if (removePicked) {
+        array.splice(index, 1);
+    }
+    return picked;
 };
 
 exports.randomIndex = function (array) {
     let index = (Math.random() * (array - 1)).toFixed();
     return parseInt(index, 10);
+};
+
+/**
+ * Remove an element from an array if element is present
+ *
+ * @param array {[]}
+ * @param element {*}
+ * @return {boolean} true if element was present, false otherwise
+ */
+exports.removeFromArray = function (array, element) {
+    const index = array.indexOf(element);
+    if (index >= 0) {
+        array.splice(index, 1);
+        return true;
+    }
+    return false;
+};
+
+/**
+ * Return first array if defined and not empty, return fallback value otherwise
+ *
+ * @param array {[]}
+ * @param fallback {[]}
+ * @return {[]}
+ */
+exports.arrayOrDefaults = function (array, fallback) {
+    return (array && array.size) ? array : fallback;
 };
 
 exports.getRandomAnswer = function (app, answers, answerSounds) {

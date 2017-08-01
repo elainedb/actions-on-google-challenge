@@ -6,7 +6,10 @@ class SimpleIntent {
         this.intentId = intentId;
     }
 
-    trigger() {
+    /**
+     * @param app {ApiAiApp}
+     */
+    trigger(app) {
         throw new Error('Not implemented');
     }
 

@@ -19,6 +19,7 @@ const CONTEXT_SONG = "context_game_song";
 
 // TELL A STORY
 const ENTITY_GAME_TELL_A_STORY = "tell a story";
+const CONTEXT_STORY = "context_game_story";
 
 class ChooseGame extends SimpleIntent {
 
@@ -50,6 +51,7 @@ class ChooseGame extends SimpleIntent {
             app.setContext(CONTEXT_SONG, utils.DEFAULT_LIFESPAN, {});
             app.ask(`<speak>${intro} ${question}</speak>`);
         } else if (app.getArgument(chooseGameData.ENTITY_GAME) === ENTITY_GAME_TELL_A_STORY) {
+            app.setContext(CONTEXT_STORY, utils.DEFAULT_LIFESPAN, {});
             app.ask('Tell a story is work in progress. What do you want to play?');
         } else {
             app.ask('entity_game, you should not be here... you said ' + app.getArgument(chooseGameData.ENTITY_GAME) + '. What do you want to play?');

@@ -1,9 +1,10 @@
 'use strict';
-const utils = require('./hooks/shared/_utils');
 
 process.env.DEBUG = 'actions-on-google:*';
 const App = require('actions-on-google').ApiAiApp;
 const functions = require('firebase-functions');
+
+require('./hooks/shared/object.ext');
 
 const Welcome = require('./hooks/welcome');
 const ChooseGame = require('./hooks/chooseGame/chooseGame');
@@ -14,6 +15,7 @@ const DontKnow = require('./hooks/animals/dontKnow');
 const AgainYes = require('./hooks/animals/againYes');
 const AgainNo = require('./hooks/animals/againNo');
 const Pokemon = require('./hooks/easteregg/pokemon');
+const StoriesGame = require('./hooks/stories/storiesGame');
 
 const ChooseSong = require('./hooks/song/chooseSong');
 
@@ -33,7 +35,8 @@ exports.babysitter = functions.https.onRequest((request, response) => {
         new DontKnow(),
         new AgainYes(),
         new AgainNo(),
-        new ChooseSong()
+        new ChooseSong(),
+        new StoriesGame()
     ].forEach(i => i.register(actionMap));
 
     app.handleRequest(actionMap);
