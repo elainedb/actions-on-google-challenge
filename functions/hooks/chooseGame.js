@@ -3,7 +3,7 @@
 const SimpleIntent = require('./shared/simpleIntent');
 const utils = require('./shared/_utils');
 
-const INTENT_ID = 'auntie.choosegame';
+const INTENT_ID = 'intent.auntie.choosegame';
 
 const DEFAULT_LIFESPAN = 5;
 
@@ -11,17 +11,23 @@ const ENTITY_GAME = "game";
 
 // ANIMAL SOUNDS
 const ENTITY_GAME_ANIMAL_SOUNDS = "animal sounds";
-const CONTEXT_ANIMAL_SOUNDS = "game_animal";
+const CONTEXT_ANIMAL_SOUNDS = "context_game_animal";
+
 const ENTITY_DOG = "dog";
 const ENTITY_CAT = "cat";
 const ENTITY_MONKEY = "monkey";
 const ENTITY_ELEPHANT = "elephant";
-const ANIMALS = new Set([ENTITY_DOG, ENTITY_CAT, ENTITY_MONKEY, ENTITY_ELEPHANT]);
+const ENTITY_PIGEON = "pigeon";
+const ENTITY_LION = "lion";
+
+const ANIMALS = new Set([ENTITY_DOG, ENTITY_CAT, ENTITY_MONKEY, ENTITY_ELEPHANT, ENTITY_PIGEON, ENTITY_LION]);
 const ANIMAL_SOUNDS_SRC = new Set([
                             'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/animals/dog/bark.mp3',
                             'https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg',
                             // 'http://www.freesoundeffects.com/mp3_89451.mp3',
                             'http://www.freesoundeffects.com/mp3_466215.mp3',
+                            'http://www.freesoundeffects.com/mp3_466267.mp3',
+                            'http://www.freesoundeffects.com/mp3_466267.mp3',
                             'http://www.freesoundeffects.com/mp3_466267.mp3'
                         ]);
 
@@ -68,7 +74,7 @@ class ChooseGame extends SimpleIntent {
             app.setContext(CONTEXT_ANIMAL_SOUNDS, DEFAULT_LIFESPAN, {});
             app.ask(`<speak>${intro} ${question} ${utils.getRandomAnswer(app, answers, ANIMAL_SOUNDS_SRC)}</speak>`);
         } else {
-            app.tell(utils.randomFromArray(SENTENCES) + app.getArgument(ENTITY_GAME));
+            app.ask('entity_game, you should not be here... you said ' + app.getArgument(ENTITY_GAME));
         }
     }
 }
