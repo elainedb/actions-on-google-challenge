@@ -1,9 +1,8 @@
 'use strict';
 
 
-const SimpleIntent = require('./simpleIntent');
-
-const utils = require('./_utils');
+const SimpleIntent = require('../shared/simpleIntent');
+const utils = require('../shared/_utils');
 
 const INTENT_ID = 'intent.auntie.game.animal';
 
