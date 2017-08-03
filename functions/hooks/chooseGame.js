@@ -24,16 +24,11 @@ const ANIMALS = new Set([ENTITY_DOG, ENTITY_CAT, ENTITY_MONKEY, ENTITY_ELEPHANT,
 const ANIMAL_SOUNDS_SRC = new Set([
                             'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/animals/dog/bark.mp3',
                             'https://actions.google.com/sounds/v1/animals/cat_purr_close.ogg',
-                            // 'http://www.freesoundeffects.com/mp3_89451.mp3',
                             'http://www.freesoundeffects.com/mp3_466215.mp3',
                             'http://www.freesoundeffects.com/mp3_466267.mp3',
                             'http://www.freesoundeffects.com/mp3_466267.mp3',
                             'http://www.freesoundeffects.com/mp3_466267.mp3'
                         ]);
-
-                            // dog alt : http://www.freesoundeffects.com/mp3_89452.mp3 / http://www.freesoundeffects.com/mp3_89455.mp3 / http://www.freesoundeffects.com/mp3_89459.mp3 / http://www.freesoundeffects.com/mp3_89461.mp3
-                            // monkey alt : http://www.freesoundeffects.com/mp3_466218.mp3 / http://www.freesoundeffects.com/mp3_466219.mp3
-                            // elephant alt : http://www.freesoundeffects.com/mp3_466268.mp3
 
 // SING A SONG
 const ENTITY_GAME_SING_A_SONG = "sing a song";
