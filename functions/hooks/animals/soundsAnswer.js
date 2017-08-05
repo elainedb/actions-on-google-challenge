@@ -3,6 +3,7 @@
 
 const SimpleIntent = require('../shared/simpleIntent');
 const utils = require('../shared/_utils');
+const animalData = require('./animalData');
 
 const INTENT_ID = 'intent.auntie.game.animal';
 
@@ -18,10 +19,15 @@ class AnimalSoundsAnswer extends SimpleIntent {
     }
 
     trigger(app) {
-        app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {});
+        let resultMessage;
+        let context = app.getContext(CONTEXT_ANIMAL_SOUNDS);
+        let previousRound = context.parameters.round;
+        let previousPoints = context.parameters.points;
+        var actualPoints = previousPoints;
+
         // if good answer
         if (app.data.answer === app.getArgument(ENTITY_ANIMAL)) {
-            app.ask("yoohoo!");
+            actualPoints = previousPoints + 1;
             if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
                 let richResponse = app.buildRichResponse()
                     .addSimpleResponse(`<speak>Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}</speak>`);
@@ -34,13 +40,33 @@ class AnimalSoundsAnswer extends SimpleIntent {
                     //     app.buildBasicCard(GAME_SUGGESTIONS[1])
                     //         .setImage(image[0], image[1])
                     //         .addButton('GOOOOOGLE_2', 'https://www.google.com/about/'))
-                app.ask(richResponse);
+                resultMessage = richResponse; // Object object !!!!
+                resultMessage = `Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}`;
             } else {
-                app.ask(`<speak>Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}</speak>`);
+                resultMessage = `Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}`;
             }
         } else {
-            app.ask("too bad");
+            resultMessage = "too bad";
         }
+
+        console.log("context after response");
+        console.log(app.getContext(CONTEXT_ANIMAL_SOUNDS));
+
+        // animal next round
+        let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : animalData.ANIMALS;
+        if (answers.size === 0) {
+            app.data.animalAnswers = animalData.ANIMALS;
+        }
+        let question = utils.randomFromArray(animalData.SENTENCES_ANIMAL_SOUNDS);
+
+        let actualRound = previousRound + 1;
+        app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
+                round : actualRound,
+                points : actualPoints
+            });
+
+        app.ask(`<speak>${resultMessage}. You now have: ${actualPoints}/${actualRound} good answers. Next!
+                ${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}</speak>`);
     }
 }
 
