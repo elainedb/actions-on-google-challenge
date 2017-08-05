@@ -82,24 +82,24 @@ const ENTITY_DONPHAN = "donphan";
 
 // pokemon answers
 
-const SENTENCE_PIKACHU = "pikachu is the most famous pokemon in the world ! pika pika forever !";
+const SENTENCE_PIKACHU = "pikachu is the most famous pokemon in the world and is sacha's best loyal friend ! pika pika forever !";
 const SENTENCE_PICHU = "Pichu is a social Pokémon known for its playful and mischievous demeanor. It is usually found in groups and often touch tails with other Pichu as a show of courage, creating a shower of sparks that can make them cry.";
-const SENTENCE_RAICHU = "raichu is the third evolution of pichu. he evolves when he is exposed to a thunder stone.";
+const SENTENCE_RAICHU = "raichu is the third evolution of pichu. he evolves when he is exposed to a thunder stone. By collecting its psychic power in its tail, it is able to ride it like a surfboard and float in the air. While its cheek sacs are still used to store electricity, rubbing them releases a sweet aroma.";
 const SENTENCE_RATTATA = "rattata is the most common pokemon on earth with his wingman. It is the only possible starter Pokémon in Pokémon Rumble.";
-const SENTENCE_RATICATE = "Raticate evolves from Rattata starting at level 20. He is a normal type pokemon.";
+const SENTENCE_RATICATE = "Raticate is selective in what it eats, however, only eating fresh, high quality foods. Rumor has it that a certain high-class restaurant even exploits this selectivity, bringing Raticate along to buy ingredients and letting it taste test new dishes.";
 const SENTENCE_MARILL = "marill is a kind of little water mouse with a blue bubble-like ball at the tip of its zigzagging black tail full of oil. The oil is lighter than water, and keeps Marill afloat in the water.";
 const SENTENCE_AZUMARILL = "Azumarill has highly developed hearing that allows it to hear distances, even when it is underwater. By keeping still and listening closely, it can identity prey even in wild, fast-moving rivers. If Azumarill spots a drowning Pokémon, it will make a balloon out of air.";
 
 const SENTENCE_MAGIKARP = "Magikarp is the utmost lovely and useless pokemon of the game, chocking that he become so powerfull after his transformation into Gyarados starting at level 20. !";
 
-const SENTENCE_BULBASAUR = "Bulbasaur is one of three starter Pokémon of Kanto. He is a dual-type Grass/Poison Pokémon introduced in Generation 1.";
+const SENTENCE_BULBASAUR = "Bulbasaur is one of three starter Pokémon of Kanto. He is a dual-type Grass/Poison Pokémon introduced in Generation one. Many Bulbasaur gather every year in a hidden garden in Kanto to evolve into Ivysaur in a ceremony led by a Venusaur.";
 const SENTENCE_SQUIRTLE = "Squirtle is one of three starter Pokémon of Kanto. Some of them joined the Squirle Squad after being abandoned by their trainers.";
-const SENTENCE_CHARMANDER = "Charmander is a Fire-type Pokémon, he is one of three starter Pokémon of Kanto.";
-const SENTENCE_CHARIZARD = "Charizard is a dual-type Fire/Flying Pokémon. It is the final form of Charmander. It can Mega Evolve into two forms with specials items.";
+const SENTENCE_CHARMANDER = "Charmander is a Fire-type Pokémon, he is one of three starter Pokémon of Kanto. A fire burns at the tip of his slender tail. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokémon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged.";
+const SENTENCE_CHARIZARD = "Charizard is a dual-type Fire/Flying Pokémon. It is the final form of Charmander. It can Mega Evolve into two forms with specials items. Its fiery breath is capable of melting boulders, massive glaciers, and has been known to accidentally cause forest fires.";
 
-const SENTENCE_PIDGEY = "Pidgey is the most common pokemon on earth with his large teeth friend.";
-const SENTENCE_PIDGEOTTO = "pidgetto is pidgey evolution and start at level 18.";
-const SENTENCE_PIDGEOT = "pidgeot is the third evolution of pidgey and start at level 36.";
+const SENTENCE_PIDGEY = "Pidgey is the most common pokemon on earth with his large teeth friend. It is a docile Pokémon, and generally prefers to flee from its enemies rather than fight them.";
+const SENTENCE_PIDGEOTTO = "pidgetto is pidgey evolution and start at level 18. He is a powerful flier capable of carrying prey several miles to its nest. It has amazing vision,";
+const SENTENCE_PIDGEOT = "pidgeot is the third evolution of pidgey and start at level 36. This Pokémon is capable of flying faster than the speed of sound. Its plumage is often described as beautiful.";
 const SENTENCE_PSYDUCK = "psyduck is a water type poekmon. This poor one is constantly stunned by its headache and is unable to think very clearly.";
 const SENTENCE_GOLDUCK = "golduck evolves from Psyduck starting at level 33 and has the ability to give knowledge to its Trainer and fellow Pokémon through telepathy.";
 const SENTENCE_MURKROW = "Murkrow has a fondness for anything sparkly, and it will steal things such as jewelry to bring it back to its nest. Its fondness for shiny objects go as far as fighting with other Pokémon that enjoy shiny objects to gain their stashes.";
@@ -111,7 +111,7 @@ const SENTENCE_MOLTRES = "moltres is a dual-type Fire/Flying Legendary Pokémon,
 const SENTENCE_ZAPDOS = "zapdos is a dual-type Electric/Flying Legendary Pokémon, one of the three Legendary birds of Kanto. When stricken by lightning, it gains power. Zapdos reportedly appears only during thunderstorms, and is said to live among thunderclouds.";
 
 const SENTENCE_MEOWTH = "Meowth is one of the two main Pokémon in the series. He is one part of the team rocket with jesse and james";
-const SENTENCE_PERSIAN = "persian is a feline normal type pokemon evolves from meowth at level 28.";
+const SENTENCE_PERSIAN = "persian is a feline normal type pokemon evolves from meowth at level 28. He is popular for its elegance, it is extremely difficult to raise as a pet due to its fickle and temperamental personality.";
 const SENTENCE_MEW = "mew is a Psychic-type Mythical Pokémon incredibly adaptable, able to travel freely in the air or underwater.";
 const SENTENCE_MEWTWO = "mewtwo is a Psychic-type Legendary Pokémon and was created after years of horrific gene splicing and DNA engineering experiments based on Mew. It is said to have the most savage heart among all Pokémon but it was later shown to be caring, protective, and even altruistic.";
 
@@ -125,7 +125,7 @@ const SENTENCE_PONYTA = "Ponyta can control its flames so that its rider is not 
 const SENTENCE_RAPIDASH = "rapidash runs at about 150 mph, chasing everything that moves in hopes of racing it.";
 
 const SENTENCE_EEVEE = "Eevee is said to have an irregularly shaped genetic structure that allows it to adapt to many different kinds of environments. Eventually, Eevee may evolve to better suit its surroundings.";
-const SENTENCE_VULPIX = "Vulpix evolves into Ninetales when exposed to a Fire Stone.";
+const SENTENCE_VULPIX = "Vulpix has a flame inside its body that never goes out, and is capable of manipulating fire to such precision as to create floating wisps of flame.";
 
 const SENTENCE_MAREEP = "Mareep's wool, which grows continuously, stores electricity, rubbing together and building a static charge. Touching the wool when it is charged will result in a static shock.";
 const SENTENCE_FLAAFY = "flaafy evolves from Mareep starting at level 15, Storing too much electricity caused Flaaffy to lose the wool over most of its body, but the bare, rubbery skin protects it from the electricity stored in its fleece.";
@@ -136,7 +136,7 @@ const SENTENCE_MANKEY = "Mankey's preferred food is chestnuts, although Mankey u
 const SENTENCE_PRIMEAPE = "When Primeape is furious, its blood circulation is boosted. This makes its muscles stronger, but at the cost of some of its intelligence. It has shown some fondness for bananas.";
 
 const SENTENCE_EKANS = "ekans is jesse companion received as a chūgen gift, By flicking its tongue out, it is able to detect danger and the scent of prey. Its jaw can detach to swallow large prey, but such a meal can make Ekans too heavy to move.";
-const SENTENCE_ARBOK = "arbok";
+const SENTENCE_ARBOK = "Arbok is territorial. It lashes out at intruders with long fangs tipped with deadly venom. With a vengeful nature, it will not give up a chase once it targets its prey or an opponent, no matter how far.";
 
 const SENTENCE_TAUROS = "Tauros is a violent, rowdy Pokémon that whips itself into a frenzy using its three tails. Once it starts charging, it is unable to stop or change course until it hits something.";
 
@@ -152,7 +152,8 @@ const SENTENCE_SWINUB = "Swinub favorite food is a type of mushroom that grows b
 const SENTENCE_PHANPY = "phanpy looks like a Dumbo's pokemon world ! To make its nest, it digs a vertical pit near the edge of a river.";
 const SENTENCE_DONPHAN = "donphan is the evolution of phanpy, chocking that the little one became so big and strong ! Donphan has the ability to curl up into a ball and violently roll around like a wheel. These rolling tackles are strong enough to knock down a house. ";
 
-const SENTENCE_ALMOST = "it's not the correct answer but you are right, they are from the same animal's family !"
+// ??? maybe at end
+const SENTENCE_ALMOST = "it's not the correct answer but you are right, they are from an animal reign !"
 
 class Pokemon extends SimpleIntent {
 
