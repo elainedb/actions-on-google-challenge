@@ -7,8 +7,12 @@ const functions = require('firebase-functions');
 
 const Welcome = require('./hooks/welcome');
 const ChooseGame = require('./hooks/chooseGame');
+
 const SoundsAnswer = require('./hooks/animals/soundsAnswer');
+const Repeat = require('./hooks/animals/repeat');
 const Pokemon = require('./hooks/easteregg/pokemon');
+
+const ChooseSong = require('./hooks/song/chooseSong');
 
 exports.babysitter = functions.https.onRequest((request, response) => {
 
@@ -21,7 +25,9 @@ exports.babysitter = functions.https.onRequest((request, response) => {
         new Welcome(),
         new ChooseGame(),
         new SoundsAnswer(),
-        new Pokemon()
+        new Pokemon(),
+        new Repeat(),
+        new ChooseSong()
     ].forEach(i => i.register(actionMap));
 
     app.handleRequest(actionMap);

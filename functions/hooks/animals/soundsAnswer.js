@@ -3,7 +3,7 @@
 
 const SimpleIntent = require('../shared/simpleIntent');
 const utils = require('../shared/_utils');
-const chooseGame = require('../chooseGame');
+const animalData = require('./animalData');
 
 const INTENT_ID = 'intent.auntie.game.animal';
 
@@ -19,21 +19,15 @@ class AnimalSoundsAnswer extends SimpleIntent {
     }
 
     trigger(app) {
-        // if good answer
         let resultMessage;
         let context = app.getContext(CONTEXT_ANIMAL_SOUNDS);
-        console.log("context in sounds Answer");
-        console.log(context);
-        if (!context) {
-            app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
-                set_number : 0,
-                points : 0
-            });
-        }
+        let previousRound = context.parameters.round;
+        let previousPoints = context.parameters.points;
+        var actualPoints = previousPoints;
 
+        // if good answer
         if (app.data.answer === app.getArgument(ENTITY_ANIMAL)) {
-            context.parameters.points ++;
-
+            actualPoints = previousPoints + 1;
             if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
                 let richResponse = app.buildRichResponse()
                     .addSimpleResponse(`<speak>Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}</speak>`);
@@ -46,37 +40,36 @@ class AnimalSoundsAnswer extends SimpleIntent {
                     //     app.buildBasicCard(GAME_SUGGESTIONS[1])
                     //         .setImage(image[0], image[1])
                     //         .addButton('GOOOOOGLE_2', 'https://www.google.com/about/'))
-                resultMessage = richResponse;
+                resultMessage = richResponse; // Object object !!!!
+                resultMessage = `Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}`;
             } else {
-                resultMessage = `<speak>Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}</speak>`;
+                resultMessage = `Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}`;
             }
         } else {
-
-            resultMessage = `Too bad`;
+            resultMessage = "too bad";
         }
 
-        app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
-            set_number : context.set_number++,
-            points : context.points
-        });
         console.log("context after response");
         console.log(app.getContext(CONTEXT_ANIMAL_SOUNDS));
 
-
-        // animal next question
-        let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : chooseGame.ANIMALS;
+        // animal next round
+        let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : animalData.ANIMALS;
         if (answers.size === 0) {
-            app.data.animalAnswers = chooseGame.ANIMALS;
+            app.data.animalAnswers = animalData.ANIMALS;
         }
-        let question = utils.randomFromArray(chooseGame.SENTENCES_ANIMAL_SOUNDS);
+        let question = utils.randomFromArray(animalData.SENTENCES_ANIMAL_SOUNDS);
 
+        let actualRound = previousRound + 1;
 
-        app.ask(`${resultMessage}. 
-        You now have: 
-        ${app.getContext(CONTEXT_ANIMAL_SOUNDS).parameters.points}/${app.getContext(CONTEXT_ANIMAL_SOUNDS).parameters.set_number} 
-        good responses. 
-        Next!
-        ${question} ${utils.getRandomAnswer(app, answers, chooseGame.ANIMAL_SOUNDS_SRC)}`);
+        app.data.question = `${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}`;
+
+        app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
+                round : actualRound,
+                points : actualPoints
+            });
+
+        app.ask(`<speak>${resultMessage}. You now have: ${actualPoints}/${actualRound} good answers. Next!
+                ${app.data.question}</speak>`);
     }
 }
 
