@@ -85,15 +85,15 @@ const ENTITY_DONPHAN = "donphan";
 const SENTENCE_PIKACHU = "pikachu is the most famous pokemon in the world and is sacha's best loyal friend ! pika pika forever !";
 const SENTENCE_PICHU = "Pichu is a social Pokémon known for its playful and mischievous demeanor. It is usually found in groups and often touch tails with other Pichu as a show of courage, creating a shower of sparks that can make them cry.";
 const SENTENCE_RAICHU = "raichu is the third evolution of pichu. he evolves when he is exposed to a thunder stone. By collecting its psychic power in its tail, it is able to ride it like a surfboard and float in the air. While its cheek sacs are still used to store electricity, rubbing them releases a sweet aroma.";
-const SENTENCE_RATTATA = "rattata is the most common pokemon on earth with his wingman. It is the only possible starter Pokémon in Pokémon Rumble.";
+const SENTENCE_RATTATA = "rattata is the most common pokemon on earth with his friend with wings. It is the only possible starter Pokémon in Pokémon Rumble.";
 const SENTENCE_RATICATE = "Raticate is selective in what it eats, however, only eating fresh, high quality foods. Rumor has it that a certain high-class restaurant even exploits this selectivity, bringing Raticate along to buy ingredients and letting it taste test new dishes.";
 const SENTENCE_MARILL = "marill is a kind of little water mouse with a blue bubble-like ball at the tip of its zigzagging black tail full of oil. The oil is lighter than water, and keeps Marill afloat in the water.";
 const SENTENCE_AZUMARILL = "Azumarill has highly developed hearing that allows it to hear distances, even when it is underwater. By keeping still and listening closely, it can identity prey even in wild, fast-moving rivers. If Azumarill spots a drowning Pokémon, it will make a balloon out of air.";
 
-const SENTENCE_MAGIKARP = "Magikarp is the utmost lovely and useless pokemon of the game, chocking that he become so powerfull after his transformation into Gyarados starting at level 20. !";
+const SENTENCE_MAGIKARP = "Magikarp is the utmost lovely and useless pokemon of the game, chocking that he become so powerfull after his transformation into Gyarados starting at level 20 !";
 
 const SENTENCE_BULBASAUR = "Bulbasaur is one of three starter Pokémon of Kanto. He is a dual-type Grass/Poison Pokémon introduced in Generation one. Many Bulbasaur gather every year in a hidden garden in Kanto to evolve into Ivysaur in a ceremony led by a Venusaur.";
-const SENTENCE_SQUIRTLE = "Squirtle is one of three starter Pokémon of Kanto. Some of them joined the Squirle Squad after being abandoned by their trainers.";
+const SENTENCE_SQUIRTLE = "Squirtle is one of three starter Pokémon of Kanto. Some of them joined the Squirtle Squad after being abandoned by their trainers.";
 const SENTENCE_CHARMANDER = "Charmander is a Fire-type Pokémon, he is one of three starter Pokémon of Kanto. A fire burns at the tip of his slender tail. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokémon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged.";
 const SENTENCE_CHARIZARD = "Charizard is a dual-type Fire/Flying Pokémon. It is the final form of Charmander. It can Mega Evolve into two forms with specials items. Its fiery breath is capable of melting boulders, massive glaciers, and has been known to accidentally cause forest fires.";
 
@@ -181,7 +181,7 @@ class Pokemon extends SimpleIntent {
                 app.ask(SENTENCE_RATTATA)
                 break
             case ENTITY_RATICATE:
-                app.ask(SENTENCE_RATICATEATAC)
+                app.ask(SENTENCE_RATICATE)
                 break;
             case ENTITY_MARILL:
                 app.ask(SENTENCE_MARILL)
