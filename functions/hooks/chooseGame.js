@@ -3,6 +3,7 @@
 const SimpleIntent = require('./shared/simpleIntent');
 const utils = require('./shared/_utils');
 const animalData = require('./animals/animalData');
+const songData = require('./song/songData');
 
 const INTENT_ID = 'intent.auntie.choosegame';
 
@@ -16,6 +17,7 @@ const CONTEXT_CHOOSE_GAME = "context_choose_game";
 
 // SING A SONG
 const ENTITY_GAME_SING_A_SONG = "sing a song";
+const CONTEXT_SONG = "context_game_song";
 
 // TELL A STORY
 const ENTITY_GAME_TELL_A_STORY = "tell a story";
@@ -44,13 +46,17 @@ class ChooseGame extends SimpleIntent {
                 app.data.animalAnswers = animalData.ANIMALS;
             }
 
-            app.data.question = `${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}`;
-
             app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
                 round: 0,
                 points: 0
             });
-            app.ask(`<speak>${intro} ${app.data.question}</speak>`);
+            app.ask(`<speak>${intro} ${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}</speak>`);
+        } else if (app.getArgument(ENTITY_GAME) === ENTITY_GAME_SING_A_SONG) {
+            let intro = utils.randomFromArray(SENTENCES) + app.getArgument(ENTITY_GAME) + ". ";
+            let question = utils.randomFromArray(songData.SENTENCES_SONG);
+
+            app.setContext(CONTEXT_SONG, utils.DEFAULT_LIFESPAN, {});
+            app.ask(`<speak>${intro} ${question}</speak>`);
         } else {
             app.ask('entity_game, you should not be here... you said ' + app.getArgument(ENTITY_GAME));
         }
