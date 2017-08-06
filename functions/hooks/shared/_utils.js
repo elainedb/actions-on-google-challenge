@@ -40,7 +40,7 @@ exports.getRandomAnswer = function (app, answers, answerSounds) {
     app.data.answer = randomAnswer;
     answers.delete(randomAnswer);
     answerSounds.delete(randomAnswerSound);
-    return randomAnswer + `<audio src="${randomAnswerSound}"></audio>`;
+    return `<audio src="${randomAnswerSound}"></audio>`;
 };
 
 exports.getSong = function(app, chosenSong, songs, songsSrc) {
