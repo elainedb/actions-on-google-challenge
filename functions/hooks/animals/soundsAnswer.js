@@ -76,7 +76,7 @@ class AnimalSoundsAnswer extends SimpleIntent {
                         app.buildBasicCard(`Picture: ${goodAnswer}.`)
                             .setImage('https://www.animalaid.org.uk/wp-content/uploads/2016/08/lamb-iStock-copy-767x655.jpg', "img")
                             .addButton(`Learn more about ${goodAnswer}`, 'https://en.wikipedia.org/wiki/Sheep'))
-                    .addSimpleResponse(`<speak>${lastRoundResponse}?</speak>`);
+                    .addSimpleResponse(`<speak>${lastRoundResponse}</speak>`);
                 app.ask(richResponse);
             } else {
                 app.ask(`<speak>${resultMessage}. ${lastRoundResponse}</speak>`);
