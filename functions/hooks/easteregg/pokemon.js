@@ -300,8 +300,8 @@ class Pokemon extends SimpleIntent {
             case ENTITY_FLAAFY:
                 app.ask(SENTENCE_FLAAFY)
                 break;
-            case ENTITY_AMPHEROS:
-                app.ask(SENTENCE_AMPHEROS)
+            case ENTITY_AMPHAROS:
+                app.ask(SENTENCE_AMPHAROS)
                 break;
 
                 // monkey
