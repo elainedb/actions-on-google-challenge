@@ -67,7 +67,7 @@ class AnimalSoundsAnswer extends SimpleIntent {
                 points: 0
             });
             // yes no in context of "again"
-            app.setContext(CONTEXT_ANIMAL_SOUNDS_AGAIN, utils.DEFAULT_LIFESPAN, {});
+            app.setContext(CONTEXT_ANIMAL_SOUNDS_AGAIN, 1, {});
 
             if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
                 let richResponse = app.buildRichResponse()
