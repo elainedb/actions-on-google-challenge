@@ -1,9 +1,9 @@
 'use strict';
 
 exports.SENTENCES_ANIMAL_SOUNDS = [
-    "OK, here we go! Do you know which animal makes this sound?",
-    "OK, let's play! Do you recognize this animal?",
-    "Yeah! Can you guess which animal makes this sound?"
+    "Do you know which animal makes this sound?",
+    "Do you recognize this animal?",
+    "Can you guess which animal makes this sound?"
 ];
 
 const ENTITY_DOG = "dog";
@@ -109,3 +109,11 @@ exports.ANIMAL_SOUNDS_SRC = new Set([
                             STORAGE_PREFIX + ENTITY_WHALE + '/whale1.mp3',
                             STORAGE_PREFIX + ENTITY_WOLF + '/wolf1.mp3'
                         ]);
+
+exports.ANIMAL_IMG_SRC = new Set([
+    //TODO
+]);
+
+exports.ANIMAL_INFO_URL = new Set([
+    //TODO
+]);

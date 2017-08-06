@@ -23,34 +23,20 @@ class AnimalSoundsAnswer extends SimpleIntent {
         let context = app.getContext(CONTEXT_ANIMAL_SOUNDS);
         let previousRound = context.parameters.round;
         let previousPoints = context.parameters.points;
-        var actualPoints = previousPoints;
+        let actualPoints = previousPoints;
+        let goodAnswer = app.data.answer;
+        let userAnswer = app.getArgument(ENTITY_ANIMAL);
 
         // if good answer
-        if (app.data.answer === app.getArgument(ENTITY_ANIMAL)) {
+        if (goodAnswer === userAnswer) {
             actualPoints = previousPoints + 1;
-            if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
-                let richResponse = app.buildRichResponse()
-                    .addSimpleResponse(`<speak>Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}</speak>`);
-                    // FYI : can not put 2 cards, only take first one
-                    // .addBasicCard(
-                    //     app.buildBasicCard(GAME_SUGGESTIONS[0])
-                    //         .setImage(image[0], image[1])
-                    //         .addButton('GOOOOOGLE', 'https://www.google.com/about/'))
-                    // .addBasicCard(
-                    //     app.buildBasicCard(GAME_SUGGESTIONS[1])
-                    //         .setImage(image[0], image[1])
-                    //         .addButton('GOOOOOGLE_2', 'https://www.google.com/about/'))
-                resultMessage = richResponse; // Object object !!!!
-                resultMessage = `Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}`;
-            } else {
-                resultMessage = `Good job! It was indeed a ${app.getArgument(ENTITY_ANIMAL)}`;
-            }
+            resultMessage = `Good job! It was indeed a ${goodAnswer}`;
         } else {
-            resultMessage = "too bad";
+            resultMessage = `Wrong answer. It was a ${goodAnswer}`;
         }
 
-        console.log("context after response");
-        console.log(app.getContext(CONTEXT_ANIMAL_SOUNDS));
+        // console.log("context after response");
+        // console.log(app.getContext(CONTEXT_ANIMAL_SOUNDS));
 
         // animal next round
         let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : animalData.ANIMALS;
@@ -64,12 +50,24 @@ class AnimalSoundsAnswer extends SimpleIntent {
         app.data.question = `${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}`;
 
         app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
-                round : actualRound,
-                points : actualPoints
-            });
+            round: actualRound,
+            points: actualPoints
+        });
 
-        app.ask(`<speak>${resultMessage}. You now have: ${actualPoints}/${actualRound} good answers. Next!
-                ${app.data.question}</speak>`);
+        if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
+            let richResponse = app.buildRichResponse()
+                .addSimpleResponse(`<speak>${resultMessage}.</speak>`)
+                .addBasicCard(
+                    app.buildBasicCard(`Picture: ${goodAnswer}.`)
+                        .setImage('https://www.animalaid.org.uk/wp-content/uploads/2016/08/lamb-iStock-copy-767x655.jpg', "img")
+                        .addButton(`Learn more about ${goodAnswer}`, 'https://en.wikipedia.org/wiki/Sheep'))
+                .addSimpleResponse(`<speak>You now have: ${actualPoints} over ${actualRound} good answers. 
+                Next round!<break/> ${app.data.question}</speak>`);
+            app.ask(richResponse);
+        } else {
+            app.ask(`<speak>${resultMessage}. You now have: ${actualPoints} over ${actualRound} good answers. 
+                Next round!<break/> ${app.data.question}</speak>`);
+        }
     }
 }
 
