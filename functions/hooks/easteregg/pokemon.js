@@ -14,7 +14,7 @@ const ENTITY_PIKACHU = "pikachu";
 const ENTITY_PICHU = "pichu";
 const ENTITY_RAICHU = "raichu";
 const ENTITY_RATTATA = "rattata";
-const ENTITY_RRATICATE = "raticate";
+const ENTITY_RATICATE = "raticate";
 const ENTITY_MARILL = "marill";
 const ENTITY_AZUMARILL = "azumarill";
 
@@ -180,8 +180,8 @@ class Pokemon extends SimpleIntent {
             case ENTITY_RATTATA:
                 app.ask(SENTENCE_RATTATA)
                 break
-            case ENTITY_RATTATAC:
-                app.ask(SENTENCE_RATTATAC)
+            case ENTITY_RATICATE:
+                app.ask(SENTENCE_RATICATEATAC)
                 break;
             case ENTITY_MARILL:
                 app.ask(SENTENCE_MARILL)
