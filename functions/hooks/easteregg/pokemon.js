@@ -163,9 +163,9 @@ class Pokemon extends SimpleIntent {
 
     trigger(app) {
         // app.setContext(CONTEXT_CHOOSE_GAME, DEFAULT_LIFESPAN, {});
-        app.tell(app.getArgument(ENTITY_POKEMON));
+        // app.tell(app.getArgument(ENTITY_POKEMON));
 
-        switch (ENTITY_POKEMON) {
+        switch (app.getArgument(ENTITY_POKEMON)) {
 
             // mouse
             case ENTITY_PIKACHU:
