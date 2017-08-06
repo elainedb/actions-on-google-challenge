@@ -70,12 +70,12 @@ const ENTITY_TAUROS = "tauros";
 
 const ENTITY_POLITOED = "politoed";
 
-const ENTITY_GIRAFARIG = "giafarig";
+const ENTITY_GIRAFARIG = "girafarig";
 
 const ENTITY_TEDDIURSA = "teddiursa";
 const ENTITY_URSARING = "ursaring";
 
-const ENTITY_SWINUB = "swinhub";
+const ENTITY_SWINUB = "swinub";
 
 const ENTITY_PHANPY = "phanpy";
 const ENTITY_DONPHAN = "donphan";
