@@ -169,195 +169,195 @@ class Pokemon extends SimpleIntent {
 
             // mouse
             case ENTITY_PIKACHU:
-                app.tell(SENTENCE_PIKACHU);
+                app.ask(SENTENCE_PIKACHU);
                 break;
             case ENTITY_PICHU:
-                app.tell(SENTENCE_PICHU);
+                app.ask(SENTENCE_PICHU);
                 break;
             case ENTITY_RAICHU:
-                app.tell(SENTENCE_RAICHU);
+                app.ask(SENTENCE_RAICHU);
                 break;
             case ENTITY_RATTATA:
-                app.tell(SENTENCE_RATTATA)
+                app.ask(SENTENCE_RATTATA)
                 break
             case ENTITY_RATTATAC:
-                app.tell(SENTENCE_RATTATAC)
+                app.ask(SENTENCE_RATTATAC)
                 break;
             case ENTITY_MARILL:
-                app.tell(SENTENCE_MARILL)
+                app.ask(SENTENCE_MARILL)
                 break;
             case ENTITY_AZUMARILL:
-                app.tell(SENTENCE_AZUMARILL)
+                app.ask(SENTENCE_AZUMARILL)
                 break;
 
                 // magikarp magikarp magikarp karp karp
             case ENTITY_MAGIKARP:
-                app.tell(SENTENCE_MAGIKARP)
+                app.ask(SENTENCE_MAGIKARP)
                 break;
 
                 // starter one
             case ENTITY_BULBASAUR:
-                app.tell(SENTENCE_BULBASAUR)
+                app.ask(SENTENCE_BULBASAUR)
                 break;
             case ENTITY_SQUIRTLE:
-                app.tell(SENTENCE_SQUIRTLE)
+                app.ask(SENTENCE_SQUIRTLE)
                 break;
             case ENTITY_CHARMANDER:
-                app.tell(SENTENCE_CHARMANDER)
+                app.ask(SENTENCE_CHARMANDER)
                 break;
             case ENTITY_CHARIZARD:
-                app.tell(SENTENCE_CHARIZARD)
+                app.ask(SENTENCE_CHARIZARD)
                 break;
 
                 // birds
             case ENTITY_PIDGEY:
-                app.tell(SENTENCE_PIDGEY)
+                app.ask(SENTENCE_PIDGEY)
                 break;
             case ENTITY_PIDGEOTTO:
-                app.tell(SENTENCE_PIDGEOTTO)
+                app.ask(SENTENCE_PIDGEOTTO)
                 break;
             case ENTITY_PIDGEOT:
-                app.tell(SENTENCE_PIDGEOT)
+                app.ask(SENTENCE_PIDGEOT)
                 break;
             case ENTITY_PSYDUCK:
-                app.tell(SENTENCE_PSYDUCK)
+                app.ask(SENTENCE_PSYDUCK)
                 break;
             case ENTITY_GOLDUCK:
-                app.tell(SENTENCE_GOLDUCK)
+                app.ask(SENTENCE_GOLDUCK)
                 break;
             case ENTITY_MURKROW:
-                app.tell(SENTENCE_MURKROW)
+                app.ask(SENTENCE_MURKROW)
                 break;
             case ENTITY_HOOTHOOT:
-                app.tell(SENTENCE_HOOTHOOT)
+                app.ask(SENTENCE_HOOTHOOT)
                 break;
             case ENTITY_NOCTOWL:
-                app.tell(SENTENCE_NOCTOWL)
+                app.ask(SENTENCE_NOCTOWL)
                 break;
 
                 // legendary
             case ENTITY_ARTICUNO:
-                app.tell(SENTENCE_ARTICUNO)
+                app.ask(SENTENCE_ARTICUNO)
                 break;
             case ENTITY_MOLTRES:
-                app.tell(SENTENCE_MOLTRES)
+                app.ask(SENTENCE_MOLTRES)
                 break;
             case ENTITY_ZAPDOS:
-                app.tell(SENTENCE_ZAPDOS)
+                app.ask(SENTENCE_ZAPDOS)
                 break;
 
                 // cats
             case ENTITY_MEOWTH:
-                app.tell(SENTENCE_MEOWTH)
+                app.ask(SENTENCE_MEOWTH)
                 break;
             case ENTITY_PERSIAN:
-                app.tell(SENTENCE_PERSIAN)
+                app.ask(SENTENCE_PERSIAN)
                 break;
             case ENTITY_MEW:
-                app.tell(SENTENCE_MEW)
+                app.ask(SENTENCE_MEW)
                 break;
             case ENTITY_MEWTWO:
-                app.tell(SENTENCE_MEWTWO)
+                app.ask(SENTENCE_MEWTWO)
                 break;
 
                 // dogs
             case ENTITY_GROWLITHE:
-                app.tell(SENTENCE_GROWLITHE)
+                app.ask(SENTENCE_GROWLITHE)
                 break;
             case ENTITY_ARCANINE:
-                app.tell(SENTENCE_ARCANINE)
+                app.ask(SENTENCE_ARCANINE)
                 break;
             case ENTITY_SNUBULL:
-                app.tell(SENTENCE_SNUBULL)
+                app.ask(SENTENCE_SNUBULL)
                 break;
             case ENTITY_HOUNDOUR:
-                app.tell(SENTENCE_HOUNDOUR)
+                app.ask(SENTENCE_HOUNDOUR)
                 break;
             case ENTITY_HOUNDOOM:
-                app.tell(SENTENCE_HOUNDOUR)
+                app.ask(SENTENCE_HOUNDOUR)
                 break;
 
                 // horse
             case ENTITY_PONYTA:
-                app.tell(SENTENCE_PONYTA)
+                app.ask(SENTENCE_PONYTA)
                 break;
             case ENTITY_RAPIDASH:
-                app.tell(SENTENCE_RAPIDASH)
+                app.ask(SENTENCE_RAPIDASH)
                 break;
 
                 // fox
             case ENTITY_EEVEE:
-                app.tell(SENTENCE_EEVEE)
+                app.ask(SENTENCE_EEVEE)
                 break;
             case ENTITY_VULPIX:
-                app.tell(SENTENCE_VULPIX)
+                app.ask(SENTENCE_VULPIX)
                 break;
 
                 // pokemouton
             case ENTITY_MAREEP:
-                app.tell(SENTENCE_MAREEP)
+                app.ask(SENTENCE_MAREEP)
                 break;
             case ENTITY_FLAAFY:
-                app.tell(SENTENCE_FLAAFY)
+                app.ask(SENTENCE_FLAAFY)
                 break;
             case ENTITY_AMPHEROS:
-                app.tell(SENTENCE_AMPHEROS)
+                app.ask(SENTENCE_AMPHEROS)
                 break;
 
                 // monkey
             case ENTITY_AIPOM:
-                app.tell(SENTENCE_AIPOM)
+                app.ask(SENTENCE_AIPOM)
                 break;
             case ENTITY_MANKEY:
-                app.tell(SENTENCE_MANKEY)
+                app.ask(SENTENCE_MANKEY)
                 break;
             case ENTITY_PRIMEAPE:
-                app.tell(SENTENCE_PRIMEAPE)
+                app.ask(SENTENCE_PRIMEAPE)
                 break;
 
                 // snake
             case ENTITY_EKANS:
-                app.tell(SENTENCE_EKANS)
+                app.ask(SENTENCE_EKANS)
                 break;
             case ENTITY_ARBOK:
-                app.tell(SENTENCE_ARBOK)
+                app.ask(SENTENCE_ARBOK)
                 break;
 
                 // cow ? bull
             case ENTITY_TAUROS:
-                app.tell(SENTENCE_TAUROS)
+                app.ask(SENTENCE_TAUROS)
                 break;
 
                 // frog
             case ENTITY_POLITOED:
-                app.tell(SENTENCE_POLITOED)
+                app.ask(SENTENCE_POLITOED)
                 break;
 
                 // no sound once the became adult, they "mugit" when they are young 
             case ENTITY_GIRAFARIG:
-                app.tell(SENTENCE_GIRAFARIG)
+                app.ask(SENTENCE_GIRAFARIG)
                 break;
 
             case ENTITY_TEDDIURSA:
-                app.tell(SENTENCE_TEDDIURSA)
+                app.ask(SENTENCE_TEDDIURSA)
                 break;
             case ENTITY_URSARING:
-                app.tell(SENTENCE_URSARING)
+                app.ask(SENTENCE_URSARING)
                 break;
 
             case ENTITY_SWINUB:
-                app.tell(SENTENCE_SWINUB)
+                app.ask(SENTENCE_SWINUB)
                 break;
 
             case ENTITY_PHANPY:
-                app.tell(SENTENCE_PHANPY)
+                app.ask(SENTENCE_PHANPY)
                 break;
             case ENTITY_DONPHAN:
-                app.tell(SENTENCE_DONPHAN)
+                app.ask(SENTENCE_DONPHAN)
                 break;
 
                 default:
-                app.tell(SENTENCE_ALMOST)
+                app.ask(SENTENCE_ALMOST)
         }
     }
 }
