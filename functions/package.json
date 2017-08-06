@@ -11,7 +11,7 @@
   "scripts": {
     "lint": "semistandard --fix \"**/*.js\"",
     "start": "firebase serve --only functions",
-    "deploy": "firebase deploy --only functions",
+    "deploy": "sh deploy.sh",
     "push": "git pull origin master; git push origin master;"
   },
   "dependencies": {
