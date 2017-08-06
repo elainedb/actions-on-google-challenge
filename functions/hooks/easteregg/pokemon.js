@@ -3,7 +3,7 @@
 const SimpleIntent = require('../shared/simpleIntent');
 const utils = require('../shared/_utils');
 
-const INTENT_ID = 'auntie.easteregg.pokemon';
+const INTENT_ID = 'intent.auntie.easteregg.pokemon';
 const CONTEXT_CHOOSE_GAME = "context_choose_game";
 const DEFAULT_LIFESPAN = 5;
 
@@ -355,6 +355,9 @@ class Pokemon extends SimpleIntent {
             case ENTITY_DONPHAN:
                 app.tell(SENTENCE_DONPHAN)
                 break;
+
+                default:
+                app.tell(SENTENCE_ALMOST)
         }
     }
 }
