@@ -35,8 +35,8 @@ const ENTITY_HOOTHOOT = "hoothoot";
 const ENTITY_NOCTOWL = "noctowl";
 
 const ENTITY_ARTICUNO = "articuno";
-const ENTITY_MOLTRES = "articuno";
-const ENTITY_ZAPDOS = "articuno";
+const ENTITY_MOLTRES = "moltres";
+const ENTITY_ZAPDOS = "zapdos";
 
 const ENTITY_MEOWTH = "meowth";
 const ENTITY_PERSIAN = "persian";
@@ -82,7 +82,7 @@ const ENTITY_DONPHAN = "donphan";
 
 // pokemon answers
 
-const SENTENCE_PIKACHU = "pikachu is the most famous pokemon in the world and is sacha's best loyal friend ! pika pika forever !";
+const SENTENCE_PIKACHU = "pikachu is the most famous pokemon in the world and is Ash's best loyal friend ! pika pika forever !";
 const SENTENCE_PICHU = "Pichu is a social Pokémon known for its playful and mischievous demeanor. It is usually found in groups and often touch tails with other Pichu as a show of courage, creating a shower of sparks that can make them cry.";
 const SENTENCE_RAICHU = "raichu is the third evolution of pichu. he evolves when he is exposed to a thunder stone. By collecting its psychic power in its tail, it is able to ride it like a surfboard and float in the air. While its cheek sacs are still used to store electricity, rubbing them releases a sweet aroma.";
 const SENTENCE_RATTATA = "rattata is the most common pokemon on earth with his friend with wings. It is the only possible starter Pokémon in Pokémon Rumble.";
@@ -93,7 +93,7 @@ const SENTENCE_AZUMARILL = "Azumarill has highly developed hearing that allows i
 const SENTENCE_MAGIKARP = "Magikarp is the utmost lovely and useless pokemon of the game, chocking that he become so powerfull after his transformation into Gyarados starting at level 20 !";
 
 const SENTENCE_BULBASAUR = "Bulbasaur is one of three starter Pokémon of Kanto. He is a dual-type Grass/Poison Pokémon introduced in Generation one. Many Bulbasaur gather every year in a hidden garden in Kanto to evolve into Ivysaur in a ceremony led by a Venusaur.";
-const SENTENCE_SQUIRTLE = "Squirtle is one of three starter Pokémon of Kanto. Some of them joined the Squirtle Squad after being abandoned by their trainers.";
+const SENTENCE_SQUIRTLE = "Squirtle is one of three starter Pokémon of Kanto. Some of them joined the Squirtle Squad after being abandoned by their trainers. They used to run wild in a small town in Kanto stealing things, writing graffiti and causing trouble for travelers in the area.";
 const SENTENCE_CHARMANDER = "Charmander is a Fire-type Pokémon, he is one of three starter Pokémon of Kanto. A fire burns at the tip of his slender tail. The flame can be used as an indication of Charmander's health and mood, burning brightly when the Pokémon is strong, weakly when it is exhausted, wavering when it is happy, and blazing when it is enraged.";
 const SENTENCE_CHARIZARD = "Charizard is a dual-type Fire/Flying Pokémon. It is the final form of Charmander. It can Mega Evolve into two forms with specials items. Its fiery breath is capable of melting boulders, massive glaciers, and has been known to accidentally cause forest fires.";
 
@@ -101,7 +101,7 @@ const SENTENCE_PIDGEY = "Pidgey is the most common pokemon on earth with his lar
 const SENTENCE_PIDGEOTTO = "pidgetto is pidgey evolution and start at level 18. He is a powerful flier capable of carrying prey several miles to its nest. It has amazing vision,";
 const SENTENCE_PIDGEOT = "pidgeot is the third evolution of pidgey and start at level 36. This Pokémon is capable of flying faster than the speed of sound. Its plumage is often described as beautiful.";
 const SENTENCE_PSYDUCK = "psyduck is a water type poekmon. This poor one is constantly stunned by its headache and is unable to think very clearly.";
-const SENTENCE_GOLDUCK = "golduck evolves from Psyduck starting at level 33 and has the ability to give knowledge to its Trainer and fellow Pokémon through telepathy.";
+const SENTENCE_GOLDUCK = "golduck evolves from Psyduck starting at level thirty three and has the ability to give knowledge to its Trainer and fellow Pokémon through telepathy.";
 const SENTENCE_MURKROW = "Murkrow has a fondness for anything sparkly, and it will steal things such as jewelry to bring it back to its nest. Its fondness for shiny objects go as far as fighting with other Pokémon that enjoy shiny objects to gain their stashes.";
 const SENTENCE_HOOTHOOT = "Inside Hoothoot's body lies a special organ that senses Earth's rotation, allowing it to keep track of time. Every day at exactly the same time, a Hoothoot will begin hooting.";
 const SENTENCE_NOCTOWL = "Noctowl is a nocturnal Pokémon. It has exceptional hearing and eyesight, can fly silently, and can turn its heads at a 180° angle to increase its intellect.";
