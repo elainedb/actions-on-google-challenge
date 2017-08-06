@@ -44,11 +44,13 @@ class ChooseGame extends SimpleIntent {
                 app.data.animalAnswers = animalData.ANIMALS;
             }
 
+            app.data.question = `${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}`;
+
             app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
                 round: 0,
                 points: 0
             });
-            app.ask(`<speak>${intro} ${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}</speak>`);
+            app.ask(`<speak>${intro} ${app.data.question}</speak>`);
         } else {
             app.ask('entity_game, you should not be here... you said ' + app.getArgument(ENTITY_GAME));
         }

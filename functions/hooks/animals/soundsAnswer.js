@@ -60,13 +60,16 @@ class AnimalSoundsAnswer extends SimpleIntent {
         let question = utils.randomFromArray(animalData.SENTENCES_ANIMAL_SOUNDS);
 
         let actualRound = previousRound + 1;
+
+        app.data.question = `${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}`;
+
         app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
                 round : actualRound,
                 points : actualPoints
             });
 
         app.ask(`<speak>${resultMessage}. You now have: ${actualPoints}/${actualRound} good answers. Next!
-                ${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}</speak>`);
+                ${app.data.question}</speak>`);
     }
 }
 

@@ -9,6 +9,7 @@ const Welcome = require('./hooks/welcome');
 const ChooseGame = require('./hooks/chooseGame');
 const SoundsAnswer = require('./hooks/animals/soundsAnswer');
 const Pokemon = require('./hooks/easteregg/pokemon');
+const Repeat = require('./hooks/animals/repeat');
 
 exports.babysitter = functions.https.onRequest((request, response) => {
 
@@ -21,7 +22,8 @@ exports.babysitter = functions.https.onRequest((request, response) => {
         new Welcome(),
         new ChooseGame(),
         new SoundsAnswer(),
-        new Pokemon()
+        new Pokemon(),
+        new Repeat()
     ].forEach(i => i.register(actionMap));
 
     app.handleRequest(actionMap);
