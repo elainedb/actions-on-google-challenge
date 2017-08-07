@@ -8,6 +8,7 @@ require('./hooks/shared/object.ext');
 
 const Welcome = require('./hooks/welcome');
 const ChooseGame = require('./hooks/chooseGame/chooseGame');
+const SwitchGame = require('./hooks/chooseGame/switchGame');
 
 const SoundsAnswer = require('./hooks/animals/soundsAnswer');
 const Repeat = require('./hooks/animals/repeat');
@@ -18,6 +19,9 @@ const Pokemon = require('./hooks/easteregg/pokemon');
 const StoriesGame = require('./hooks/stories/storiesGame');
 
 const ChooseSong = require('./hooks/song/chooseSong');
+const ListSongs = require('./hooks/song/listSongs');
+const SameSong = require('./hooks/song/sameSong');
+const OtherSong = require('./hooks/song/otherSong');
 
 exports.babysitter = functions.https.onRequest((request, response) => {
 
@@ -29,6 +33,7 @@ exports.babysitter = functions.https.onRequest((request, response) => {
     [
         new Welcome(),
         new ChooseGame(),
+        new SwitchGame(),
         new SoundsAnswer(),
         new Pokemon(),
         new Repeat(),
@@ -36,6 +41,9 @@ exports.babysitter = functions.https.onRequest((request, response) => {
         new AgainYes(),
         new AgainNo(),
         new ChooseSong(),
+        new ListSongs(),
+        new SameSong(),
+        new OtherSong(),
         new StoriesGame()
     ].forEach(i => i.register(actionMap));
 

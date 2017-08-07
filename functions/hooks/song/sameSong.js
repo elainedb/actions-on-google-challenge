@@ -4,25 +4,23 @@ const SimpleIntent = require('../shared/simpleIntent');
 const utils = require('../shared/_utils');
 const songData = require('./songData');
 
-const INTENT_ID = 'intent.auntie.game.song.choose';
+const INTENT_ID = 'intent.auntie.game.song.end.same';
 
 const CONTEXT_CHOOSE_GAME = "context_choose_game";
 const DEFAULT_LIFESPAN = 5;
 
 const ENTITY_SONG = "song";
 
-class ChooseSong extends SimpleIntent {
+class SameSong extends SimpleIntent {
 
     constructor() {
         super(INTENT_ID);
     }
 
     trigger(app) {
-        // possible songs
-        let songs = app.data.songs ? new Set(app.data.songs) : songData.SONGS;
-
+        // copié collé depuis chooseSong.js
         let startSentence = `${utils.randomFromArray(songData.SENTENCES_SONG_SING)}`;
-        let fullResponse = `<speak> ${startSentence} ${utils.getSong(app, app.getArgument(ENTITY_SONG), songs, songData.SONGS_SRC)}
+        let fullResponse = `<speak> ${startSentence} ${app.data.song}
                 ${utils.randomFromArray(songData.END_SENTENCES_SONG)} Do you want to sing the same song again, another song or do you want to play another game?</speak>`;
         let writtenResponse = `${startSentence}`;
         if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
@@ -37,4 +35,4 @@ class ChooseSong extends SimpleIntent {
     }
 }
 
-module.exports = ChooseSong;
+module.exports = SameSong;

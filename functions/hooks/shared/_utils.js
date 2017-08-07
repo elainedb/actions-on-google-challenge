@@ -105,8 +105,10 @@ exports.getSong = function(app, chosenSong, songs, songsSrc) {
         counter2++;
     }
 
-    songs.delete(chosenSong);
-    songsSrc.delete(chosenSongSrc);
+    app.data.song = `<audio src="${chosenSongSrc}"></audio>`;
+
+    // songs.delete(chosenSong);
+    // songsSrc.delete(chosenSongSrc);
 
     return `<audio src="${chosenSongSrc}"></audio>`;
 };

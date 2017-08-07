@@ -28,6 +28,8 @@ class ChooseGame extends SimpleIntent {
     }
 
     trigger(app) {
+        app.data.gameName = app.getArgument(chooseGameData.ENTITY_GAME);
+        
         if (app.getArgument(chooseGameData.ENTITY_GAME) === ENTITY_GAME_ANIMAL_SOUNDS) {
             // question
             let intro = utils.randomFromArray(chooseGameData.SENTENCES) + app.getArgument(chooseGameData.ENTITY_GAME) + ". ";
