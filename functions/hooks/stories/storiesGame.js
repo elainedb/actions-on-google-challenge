@@ -46,17 +46,17 @@ class StoriesGame extends SimpleIntent {
         }
 
         // Pick a story
-        storyCode = storyCode || utils.randomFromArray(availableStories);
+        storyCode = storyCode || utils.randomFromArray(availableStories, app.data.lastToldStory);
         utils.removeFromArray(availableStories, storyCode);
         const pickedStory = STORIES[storyCode];
+
+        app.data.lastToldStory = storyCode;
+        app.data.stories = availableStories;
 
         // Speak time
         utils.askWithSuggestions(app,
             `<speak>${pickedStory.content}<break/> Do you want to ear another story ?</speak>`,
             AFTER_STORY_SUGGESTIONS);
-
-        app.data.lastToldStory = storyCode;
-        app.data.stories = availableStories;
     }
 
     /** @param app {ApiAiApp} */
