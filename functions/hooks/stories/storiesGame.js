@@ -3,29 +3,16 @@
 const utils = require('../shared/_utils');
 const SimpleIntent = require('../shared/simpleIntent');
 
-const chooseGameData = require('../chooseGame/chooseGameData');
+const SwitchGame = require('../chooseGame/switchGame');
 
-const INTENT_ID = 'intent.auntie.game.story';
+const storiesData = require('./storiesGameData');
 
-const ARGS = {
-    story: 'story',
-    afterStoryChoice: 'choice'
-};
+const INTENT_ID = storiesData.INTENT_ID;
+const LIST_STORIES_SENTENCES = storiesData.LIST_STORIES_SENTENCES;
+const STORIES = storiesData.STORIES;
+const ARGS = storiesData.ARGS;
+const CHOICES = storiesData.CHOICES;
 
-const LIST_STORIES_SENTENCES = [
-    'Great! Here are the available stories: <p>numbers</p><p>towel</p>'
-];
-
-const STORIES = {
-    numbers: 'What did 0 say to 8 ?<break time="3s"/>Nice belt!',
-    towel: 'What gets wetter the more it dries ?<break time="3s"/>A towel!'
-};
-
-const CHOICES = {
-    yes: 'yes',
-    again: 'again',
-    no: 'no'
-};
 
 class StoriesGame extends SimpleIntent {
 
@@ -58,7 +45,7 @@ class StoriesGame extends SimpleIntent {
 
         pickedStory = STORIES[storyCode];
 
-        app.ask(`<speak>${pickedStory}<break/> Do you want to ear another story ?</speak>`);
+        app.ask(`<speak>${pickedStory.content}<break/> Do you want to ear another story ?</speak>`);
 
         app.data.lastToldStory = storyCode;
         app.data.stories = availableStories;
@@ -75,15 +62,15 @@ class StoriesGame extends SimpleIntent {
                 StoriesGame.chooseAndTellAStory(app, app.data.lastToldStory);
                 break;
             case CHOICES.no:
-                let chooseGameResponse = utils.randomFromArray(chooseGameData.CHOOSE_GAME_SENTENCES);
-                app.ask(`<speak>Ok let's switch game. ${chooseGameResponse}</speak>`, chooseGameData.NO_INPUT_SUGGESTIONS);
+                new SwitchGame().trigger(app);
                 break;
         }
     }
 
     /** @param app {ApiAiApp} */
     static listStories(app) {
-        const text = utils.randomFromArray(LIST_STORIES_SENTENCES);
+        let text = utils.randomFromArray(LIST_STORIES_SENTENCES);
+        Object.values(STORIES).forEach(s => text += `<p>${s.title}</p>`);
         app.ask(`<speak>${text}</speak>`);
     }
 }
