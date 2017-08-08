@@ -37,9 +37,6 @@ class AnimalSoundsAnswer extends SimpleIntent {
             resultMessage = `Wrong answer. It was ${utils.article(goodAnswer)} ${goodAnswer}`;
         }
 
-        // console.log("context after response");
-        // console.log(app.getContext(CONTEXT_ANIMAL_SOUNDS));
-
         // animal next round
         let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : animalData.ANIMALS;
         if (answers.size === 0) {
@@ -56,8 +53,6 @@ class AnimalSoundsAnswer extends SimpleIntent {
             points: actualPoints
         });
 
-        console.log("actualRound");
-        console.log(actualRound);
         if (actualRound === MAX_ROUND) {
             let lastRoundResponse = `It was the last round, you got ${actualPoints} over ${actualRound} good answers. 
                Do you want to play another game of animal sounds?`;
@@ -83,7 +78,7 @@ class AnimalSoundsAnswer extends SimpleIntent {
             }
 
         } else {
-            let resultSoFar = `You now have: ${actualPoints} over ${actualRound} good answers. Next round!<break/> ${app.data.question}`;
+            let resultSoFar = `You now have: ${actualPoints}<sub alias="over">/</sub>${actualRound} good answers. Next round!<break/> ${app.data.question}`;
             if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
                 let richResponse = app.buildRichResponse()
                     .addSimpleResponse(`<speak>${resultMessage}.</speak>`)
