@@ -40,7 +40,7 @@ class DontKnow extends SimpleIntent {
             points: actualPoints
         });
 
-        let resultSoFar = `You now have: ${actualPoints} over ${actualRound} good answers. Next round!<break/> ${app.data.question}`;
+        let resultSoFar = `You now have: ${actualPoints}<sub alias="over">/</sub>${actualRound} good answers. Next round!<break/> ${app.data.question}`;
 
         if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
             let richResponse = app.buildRichResponse()
