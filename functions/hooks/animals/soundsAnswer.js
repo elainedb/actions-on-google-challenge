@@ -38,9 +38,9 @@ class AnimalSoundsAnswer extends SimpleIntent {
         }
 
         // animal next round
-        let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : animalData.ANIMALS;
+        let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : new Set(animalData.ANIMALS);
         if (answers.size === 0) {
-            app.data.animalAnswers = animalData.ANIMALS;
+            app.data.animalAnswers = new Set(animalData.ANIMALS);
         }
         let question = utils.randomFromArray(animalData.SENTENCES_ANIMAL_SOUNDS);
 
