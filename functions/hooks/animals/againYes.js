@@ -21,16 +21,16 @@ class AgainYes extends SimpleIntent {
         let question = utils.randomFromArray(animalData.SENTENCES_ANIMAL_SOUNDS);
 
         // possible answers
-        let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : animalData.ANIMALS;
-        if (answers.size === 0) {
-            app.data.animalAnswers = animalData.ANIMALS;
-        }
+        let answers = utils.getAnimalList(app, animalData.ANIMALS_OBJECTS);
 
         app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
             round: 0,
             points: 0
         });
-        app.ask(`<speak>${intro} ${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}</speak>`);
+
+        let randomAnswer = utils.getRandomAnswer(app, answers);
+        app.data.answer = randomAnswer;
+        app.ask(`<speak>${intro} ${question} <audio src="${randomAnswer.src.sound}"></audio></speak>`);
     }
 }
 

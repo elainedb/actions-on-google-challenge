@@ -1,6 +1,6 @@
 'use strict';
 
-process.env.DEBUG = 'actions-on-google:*';
+process.env.DEBUG = 'actions-on-google:error';
 const App = require('actions-on-google').ApiAiApp;
 const functions = require('firebase-functions');
 

@@ -53,38 +53,33 @@ exports.arrayOrDefaults = function (array, fallback) {
     return (array && array.size) ? array : fallback;
 };
 
-exports.getRandomAnswer = function (app, answers, answerSounds) {
-    if (answers < 0) {
-            return null;
-    }
-    let randomIndex = (Math.random() * (answers.size - 1)).toFixed();
-    let randomAswerIndex = parseInt(randomIndex, 10);
-    
-    let counter = 0;
-    let randomAnswer = '';
-    let randomAnswerSound = '';
-    for (let answer of answers.values()) {
-        if (counter === randomAswerIndex) {
-            randomAnswer = answer;
-            break;
-        }
-        counter++;
+/**
+ * @param {any} app
+ * @param {T[]} answers
+ * @return {T}
+ */
+exports.getRandomAnswer = function (answers) {
+    if (!answers || answers.size < 1) {
+        return null;
     }
 
-    counter = 0;
-    for (let answerSound of answerSounds.values()) {
-        if (counter === randomAswerIndex) {
-            randomAnswerSound = answerSound;
-            break;
-        }
-        counter++;
-    }
+    let randomIndex = (Math.random() * (answers.length - 1)).toFixed();
+    let randomAnswer = answers[randomIndex];
 
-    app.data.answer = randomAnswer;
-    answers.delete(randomAnswer);
-    answerSounds.delete(randomAnswerSound);
-    return `<audio src="${randomAnswerSound}"></audio>`;
+    answers = answers.splice(randomIndex, 1);
+    return randomAnswer;
 };
+
+/**
+ * @param {*} app app passed from triiger function
+ * @param {*} referenceList
+ * @return {AnimalModel}
+ */
+exports.getAnimalList = (app, referenceList) => {
+    return app.data.animalAnswers && app.data.animalAnswers.length > 0
+        ? app.data.animalAnswers
+        : referenceList.slice();
+}
 
 exports.getSong = function(app, chosenSong, songs, songsSrc) {
     let counter = 0;

@@ -56,21 +56,11 @@ const STORAGE_PREFIX = 'https://storage.googleapis.com/project-22526627834220708
 const STORAGE_PREFIX_IMG = 'https://storage.googleapis.com/project-2252662783422070807.appspot.com/images/';
 const WIKI_URL = 'https://en.wikipedia.org/wiki/';
 
-exports.ANIMALS = new Set([ENTITY_DOG, ENTITY_CAT, ENTITY_MONKEY, ENTITY_ELEPHANT, ENTITY_PIGEON,
-    ENTITY_BEAR, ENTITY_CAMEL, ENTITY_CHICKEN, ENTITY_CICADA, ENTITY_COYOTE,
-    ENTITY_CRICKET, ENTITY_CROW, ENTITY_CUCKOO, ENTITY_DEER, ENTITY_DOLPHIN,
-    ENTITY_DONKEY, ENTITY_DUCK, ENTITY_EAGLE, ENTITY_FALCON, ENTITY_FROG,
-    ENTITY_GOOSE, ENTITY_GUINEAPIG, ENTITY_HORSE, ENTITY_HYENA, ENTITY_JAGUAR,
-    ENTITY_LEOPARD, ENTITY_LION, ENTITY_MOOSE, ENTITY_ORCA, ENTITY_OWL,
-    ENTITY_PARROT, ENTITY_PEACOCK, ENTITY_PIG, ENTITY_PENGUIN, ENTITY_PUMA,
-    ENTITY_ROOSTER, ENTITY_SEAGULL, ENTITY_SEAL, ENTITY_SHEEP, ENTITY_TIGER,
-    ENTITY_TURKEY, ENTITY_WHALE, ENTITY_WOLF]);
-
 /**
  * name: string,
  * src: {
- *  imgs: string[],
- *  sounds: string[]
+ *  img: string,
+ *  sound: string
  * }
  * hints: [string, string, string]
  */
@@ -96,6 +86,9 @@ class AnimalModel {
         this.info = WIKI_URL + info;
     }
 
+    toString() {
+        return this.name;
+    }
 }
 
 exports.ANIMALS_OBJECTS = [
@@ -111,81 +104,35 @@ exports.ANIMALS_OBJECTS = [
     new AnimalModel(ENTITY_COYOTE, null, 'coyote1.mp3', []),
     new AnimalModel(ENTITY_CRICKET, null, 'cricket1.mp3', []),
     new AnimalModel(ENTITY_CROW, null, 'crow1.mp3', []),
-    new AnimalModel(ENTITY_CUCKOO, null, '/cuckoo1.mp3', []),
-    new AnimalModel(ENTITY_DEER, null, '/deer1.mp3', []),
-    new AnimalModel(ENTITY_DOLPHIN, null, '/dolphin1.mp3', []),
-    new AnimalModel(ENTITY_DONKEY, null, '/donkey1.mp3', []),
-    new AnimalModel(ENTITY_DUCK, null, '/duck1.mp3', []),
-    new AnimalModel(ENTITY_EAGLE, null, '/eagle1.mp3', []),
-    new AnimalModel(ENTITY_FALCON, null, '/falcon1.mp3', []),
-    new AnimalModel(ENTITY_FROG, null, '/frog1.mp3', []),
-    new AnimalModel(ENTITY_GOOSE, null, '/goose1.mp3', []),
-    new AnimalModel(ENTITY_GUINEAPIG, null, '/guineapig1.mp3', []),
-    new AnimalModel(ENTITY_HORSE, null, '/horse1.mp3', []),
-    new AnimalModel(ENTITY_HYENA, null, '/hyena1.mp3', []),
-    new AnimalModel(ENTITY_JAGUAR, null, '/jaguar1.mp3', []),
-    new AnimalModel(ENTITY_LEOPARD, null, '/leopard1.mp3', []),
-    new AnimalModel(ENTITY_LION, null, '/lion1.mp3', []),
-    new AnimalModel(ENTITY_MOOSE, null, '/moose1.mp3', []),
-    new AnimalModel(ENTITY_ORCA, null, '/orca1.mp3', []),
-    new AnimalModel(ENTITY_OWL, null, '/owl1.mp3', []),
-    new AnimalModel(ENTITY_PARROT, null, '/parrot1.mp3', []),
-    new AnimalModel(ENTITY_PEACOCK, null, '/peacock1.mp3', []),
-    new AnimalModel(ENTITY_PIG, null, '/pig1.mp3', []),
-    new AnimalModel(ENTITY_PENGUIN, null, + '/penguin1.mp3', []),
-    new AnimalModel(ENTITY_PUMA, null, '/puma1.mp3', [], 'Puma_(genus)'),
-    new AnimalModel(ENTITY_ROOSTER, null, '/rooster1.mp3', []),
-    new AnimalModel(ENTITY_SEAGULL, null, '/seagull1.mp3', []),
-    new AnimalModel(ENTITY_SEAL, null, '/seal1.mp3', [], 'Pinniped'),
-    new AnimalModel(ENTITY_SHEEP, null, '/sheep1.mp3', []),
-    new AnimalModel(ENTITY_TIGER, null, '/tiger1.mp3', []),
-    new AnimalModel(ENTITY_TURKEY, null, '/turkey1.mp3', [], 'Turkey_(bird)'),
-    new AnimalModel(ENTITY_WHALE, null, '/whale1.mp3', []),
-    new AnimalModel(ENTITY_WOLF, null, '/wolf1.mp3' [])
+    new AnimalModel(ENTITY_CUCKOO, null, 'cuckoo1.mp3', []),
+    new AnimalModel(ENTITY_DEER, null, 'deer1.mp3', []),
+    new AnimalModel(ENTITY_DOLPHIN, null, 'dolphin1.mp3', []),
+    new AnimalModel(ENTITY_DONKEY, null, 'donkey1.mp3', []),
+    new AnimalModel(ENTITY_DUCK, null, 'duck1.mp3', []),
+    new AnimalModel(ENTITY_EAGLE, null, 'eagle1.mp3', []),
+    new AnimalModel(ENTITY_FALCON, null, 'falcon1.mp3', []),
+    new AnimalModel(ENTITY_FROG, null, 'frog1.mp3', []),
+    new AnimalModel(ENTITY_GOOSE, null, 'goose1.mp3', []),
+    new AnimalModel(ENTITY_GUINEAPIG, null, 'guineapig1.mp3', []),
+    new AnimalModel(ENTITY_HORSE, null, 'horse1.mp3', []),
+    new AnimalModel(ENTITY_HYENA, null, 'hyena1.mp3', []),
+    new AnimalModel(ENTITY_JAGUAR, null, 'jaguar1.mp3', []),
+    new AnimalModel(ENTITY_LEOPARD, null, 'leopard1.mp3', []),
+    new AnimalModel(ENTITY_LION, null, 'lion1.mp3', []),
+    new AnimalModel(ENTITY_MOOSE, null, 'moose1.mp3', []),
+    new AnimalModel(ENTITY_ORCA, null, 'orca1.mp3', []),
+    new AnimalModel(ENTITY_OWL, null, 'owl1.mp3', []),
+    new AnimalModel(ENTITY_PARROT, null, 'parrot1.mp3', []),
+    new AnimalModel(ENTITY_PEACOCK, null, 'peacock1.mp3', []),
+    new AnimalModel(ENTITY_PIG, null, 'pig1.mp3', []),
+    new AnimalModel(ENTITY_PENGUIN, null, 'penguin1.mp3', []),
+    new AnimalModel(ENTITY_PUMA, null, 'puma1.mp3', [], 'Puma_(genus)'),
+    new AnimalModel(ENTITY_ROOSTER, null, 'rooster1.mp3', []),
+    new AnimalModel(ENTITY_SEAGULL, null, 'seagull1.mp3', []),
+    new AnimalModel(ENTITY_SEAL, null, 'seal1.mp3', [], 'Pinniped'),
+    new AnimalModel(ENTITY_SHEEP, null, 'sheep1.mp3', []),
+    new AnimalModel(ENTITY_TIGER, null, 'tiger1.mp3', []),
+    new AnimalModel(ENTITY_TURKEY, null, 'turkey1.mp3', [], 'Turkey_(bird)'),
+    new AnimalModel(ENTITY_WHALE, null, 'whale1.mp3', []),
+    new AnimalModel(ENTITY_WOLF, null, 'wolf1.mp3', []),
 ];
-
-exports.ANIMAL_SOUNDS_SRC = new Set([
-    STORAGE_PREFIX + ENTITY_DOG + '/bark.mp3',
-    STORAGE_PREFIX + ENTITY_CAT + '/cat1.mp3',
-    STORAGE_PREFIX + ENTITY_MONKEY + '/monkey1.mp3',
-    STORAGE_PREFIX + ENTITY_ELEPHANT + '/elephant1.mp3',
-    STORAGE_PREFIX + ENTITY_PIGEON + '/pigeon1.mp3',
-    STORAGE_PREFIX + ENTITY_BEAR + '/bear1.mp3',
-    STORAGE_PREFIX + ENTITY_CAMEL + '/camel1.mp3',
-    STORAGE_PREFIX + ENTITY_CHICKEN + '/chicken1.mp3',
-    STORAGE_PREFIX + ENTITY_CICADA + '/cicada1.mp3',
-    STORAGE_PREFIX + ENTITY_COYOTE + '/coyote1.mp3',
-    STORAGE_PREFIX + ENTITY_CRICKET + '/cricket1.mp3',
-    STORAGE_PREFIX + ENTITY_CROW + '/crow1.mp3',
-    STORAGE_PREFIX + ENTITY_CUCKOO + '/cuckoo1.mp3',
-    STORAGE_PREFIX + ENTITY_DEER + '/deer1.mp3',
-    STORAGE_PREFIX + ENTITY_DOLPHIN + '/dolphin1.mp3',
-    STORAGE_PREFIX + ENTITY_DONKEY + '/donkey1.mp3',
-    STORAGE_PREFIX + ENTITY_DUCK + '/duck1.mp3',
-    STORAGE_PREFIX + ENTITY_EAGLE + '/eagle1.mp3',
-    STORAGE_PREFIX + ENTITY_FALCON + '/falcon1.mp3',
-    STORAGE_PREFIX + ENTITY_FROG + '/frog1.mp3',
-    STORAGE_PREFIX + ENTITY_GOOSE + '/goose1.mp3',
-    STORAGE_PREFIX + ENTITY_GUINEAPIG + '/guineapig1.mp3',
-    STORAGE_PREFIX + ENTITY_HORSE + '/horse1.mp3',
-    STORAGE_PREFIX + ENTITY_HYENA + '/hyena1.mp3',
-    STORAGE_PREFIX + ENTITY_JAGUAR + '/jaguar1.mp3',
-    STORAGE_PREFIX + ENTITY_LEOPARD + '/leopard1.mp3',
-    STORAGE_PREFIX + ENTITY_LION + '/lion1.mp3',
-    STORAGE_PREFIX + ENTITY_MOOSE + '/moose1.mp3',
-    STORAGE_PREFIX + ENTITY_ORCA + '/orca1.mp3',
-    STORAGE_PREFIX + ENTITY_OWL + '/owl1.mp3',
-    STORAGE_PREFIX + ENTITY_PARROT + '/parrot1.mp3',
-    STORAGE_PREFIX + ENTITY_PEACOCK + '/peacock1.mp3',
-    STORAGE_PREFIX + ENTITY_PIG + '/pig1.mp3',
-    STORAGE_PREFIX + 'pinguin' + '/penguin1.mp3',
-    STORAGE_PREFIX + ENTITY_PUMA + '/puma1.mp3',
-    STORAGE_PREFIX + ENTITY_ROOSTER + '/rooster1.mp3',
-    STORAGE_PREFIX + ENTITY_SEAGULL + '/seagull1.mp3',
-    STORAGE_PREFIX + ENTITY_SEAL + '/seal1.mp3',
-    STORAGE_PREFIX + ENTITY_SHEEP + '/sheep1.mp3',
-    STORAGE_PREFIX + ENTITY_TIGER + '/tiger1.mp3',
-    STORAGE_PREFIX + ENTITY_TURKEY + '/turkey1.mp3',
-    STORAGE_PREFIX + ENTITY_WHALE + '/whale1.mp3',
-    STORAGE_PREFIX + ENTITY_WOLF + '/wolf1.mp3'
-]);

@@ -30,23 +30,24 @@ class AnimalSoundsAnswer extends SimpleIntent {
         let userAnswer = app.getArgument(ENTITY_ANIMAL);
 
         // if good answer
-        if (goodAnswer === userAnswer) {
+        console.log('YOOOOOOOOOOOOOO');
+        console.log(goodAnswer, userAnswer);
+        if (goodAnswer.name === userAnswer) {
             actualPoints = previousPoints + 1;
-            resultMessage = `Good job! It was indeed ${utils.article(goodAnswer)} ${goodAnswer}`;
+            resultMessage = `Good job! It was indeed ${utils.article(goodAnswer.name)} ${goodAnswer.name}`;
         } else {
-            resultMessage = `Wrong answer. It was ${utils.article(goodAnswer)} ${goodAnswer}`;
+            resultMessage = `Wrong answer. It was ${utils.article(goodAnswer.name)} ${goodAnswer.name}`;
         }
 
         // animal next round
-        let answers = app.data.animalAnswers ? new Set(app.data.animalAnswers) : new Set(animalData.ANIMALS);
-        if (answers.size === 0) {
-            app.data.animalAnswers = new Set(animalData.ANIMALS);
-        }
+        let answers = utils.getAnimalList(app, animalData.ANIMALS_OBJECTS);
         let question = utils.randomFromArray(animalData.SENTENCES_ANIMAL_SOUNDS);
 
         let actualRound = previousRound + 1;
 
-        app.data.question = `${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}`;
+        let randomAnswer = utils.getRandomAnswer(answers);
+        app.data.answer = randomAnswer;
+        app.data.question = `${question}  <audio src="${randomAnswer.src.sound}"></audio>`;
 
         app.setContext(CONTEXT_ANIMAL_SOUNDS, utils.DEFAULT_LIFESPAN, {
             round: actualRound,
@@ -68,9 +69,9 @@ class AnimalSoundsAnswer extends SimpleIntent {
                 let richResponse = app.buildRichResponse()
                     .addSimpleResponse(`<speak>${resultMessage}.</speak>`)
                     .addBasicCard(
-                        app.buildBasicCard(`Picture: ${goodAnswer}.`)
-                            .setImage('https://www.animalaid.org.uk/wp-content/uploads/2016/08/lamb-iStock-copy-767x655.jpg', "img")
-                            .addButton(`Learn more about ${goodAnswer}`, 'https://en.wikipedia.org/wiki/Sheep'))
+                        app.buildBasicCard(`Picture: ${goodAnswer.name}.`)
+                            .setImage(goodAnswer.src.img, "img")
+                            .addButton(`Learn more about ${goodAnswer.name}`, goodAnswer.info))
                     .addSimpleResponse(`<speak>${lastRoundResponse}</speak>`);
                 app.ask(richResponse);
             } else {
@@ -83,9 +84,9 @@ class AnimalSoundsAnswer extends SimpleIntent {
                 let richResponse = app.buildRichResponse()
                     .addSimpleResponse(`<speak>${resultMessage}.</speak>`)
                     .addBasicCard(
-                        app.buildBasicCard(`Picture: ${goodAnswer}.`)
-                            .setImage('https://www.animalaid.org.uk/wp-content/uploads/2016/08/lamb-iStock-copy-767x655.jpg', "img")
-                            .addButton(`Learn more about ${goodAnswer}`, 'https://en.wikipedia.org/wiki/Sheep'))
+                        app.buildBasicCard(`Picture: ${goodAnswer.name}.`)
+                            .setImage(goodAnswer.src.img, "img")
+                            .addButton(`Learn more about ${goodAnswer.name}`, goodAnswer.info))
                     .addSimpleResponse(`<speak>${resultSoFar}</speak>`);
                 app.ask(richResponse);
             } else {
