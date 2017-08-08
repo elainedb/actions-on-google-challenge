@@ -83,18 +83,19 @@ class AnimalModel {
      * @param {string} info
      */
     constructor(name, img, sound, hints, info) {
-        sound = name === ENTITY_PENGUIN ? STORAGE_PREFIX + name + '/' + sound : STORAGE_PREFIX + 'pinguin' + '/' + sound;
+        sound = name !== ENTITY_PENGUIN ? STORAGE_PREFIX + name + '/' + sound : STORAGE_PREFIX + 'pinguin' + '/' + sound;
         img = img || '001.jpg';
-        info = info || name.charAt(0).toUpperCase() + name.slice(1);
+        info = info || name.charAt(0) + name.slice(1);
 
         this.name = name;
         this.src = {
-            imgs: STORAGE_PREFIX_IMG + name + '/' + name + '001.png',
+            img: STORAGE_PREFIX_IMG + name + '/' + name + '001.png',
             sound:  sound
         };
         this.hints = hints;
         this.info = WIKI_URL + info;
     }
+
 }
 
 exports.ANIMALS_OBJECTS = [
@@ -135,13 +136,13 @@ exports.ANIMALS_OBJECTS = [
     new AnimalModel(ENTITY_PUMA, null, '/puma1.mp3', [], 'Puma_(genus)'),
     new AnimalModel(ENTITY_ROOSTER, null, '/rooster1.mp3', []),
     new AnimalModel(ENTITY_SEAGULL, null, '/seagull1.mp3', []),
-    new AnimalModel(ENTITY_SEAL, null, '/seal1.mp3', []),
+    new AnimalModel(ENTITY_SEAL, null, '/seal1.mp3', [], 'Pinniped'),
     new AnimalModel(ENTITY_SHEEP, null, '/sheep1.mp3', []),
     new AnimalModel(ENTITY_TIGER, null, '/tiger1.mp3', []),
     new AnimalModel(ENTITY_TURKEY, null, '/turkey1.mp3', [], 'Turkey_(bird)'),
     new AnimalModel(ENTITY_WHALE, null, '/whale1.mp3', []),
-    new AnimalModel(ENTITY_WOLF, null, '/wolf1.mp3' []),
-],
+    new AnimalModel(ENTITY_WOLF, null, '/wolf1.mp3' [])
+];
 
 exports.ANIMAL_SOUNDS_SRC = new Set([
     STORAGE_PREFIX + ENTITY_DOG + '/bark.mp3',

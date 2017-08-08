@@ -30,7 +30,8 @@ class AgainYes extends SimpleIntent {
             round: 0,
             points: 0
         });
-        app.ask(`<speak>${intro} ${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}</speak>`);    }
+        app.ask(`<speak>${intro} ${question} ${utils.getRandomAnswer(app, answers, animalData.ANIMAL_SOUNDS_SRC)}</speak>`);
+    }
 }
 
 module.exports = AgainYes;
