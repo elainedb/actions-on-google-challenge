@@ -53,6 +53,26 @@ exports.arrayOrDefaults = function (array, fallback) {
     return (array && array.size) ? array : fallback;
 };
 
+/**
+ * Shortcut to ask something and display suggestions if display is available
+ *
+ * @param app {ApiAiApp}
+ * @param text {string} ssml including <speak>
+ * @param suggestions {string[]}
+ * @param noInputs {Array<string>=} ask noInputs
+ * @return {Object} ask HTTP response.
+ */
+exports.askWithSuggestions = function (app, text, suggestions, noInputs) {
+    if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
+        let richResponse = app.buildRichResponse()
+            .addSimpleResponse(text)
+            .addSuggestions(suggestions);
+        return app.ask(richResponse);
+    } else {
+        return app.ask(text, noInputs);
+    }
+};
+
 exports.getRandomAnswer = function (app, answers, answerSounds) {
     if (answers < 0) {
             return null;

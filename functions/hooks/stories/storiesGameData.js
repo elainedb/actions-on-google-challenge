@@ -22,6 +22,11 @@ exports.STORIES = {
     }
 };
 
+/** @type {string[]} */
+exports.STORIES_SUGGESTIONS = Object.values(exports.STORIES).map(s => s.title);
+
+exports.AFTER_STORY_SUGGESTIONS = ['Again!', 'Another', 'Play another game'];
+
 exports.CHOICES = {
     yes: 'yes',
     again: 'again',

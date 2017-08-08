@@ -8,8 +8,10 @@ const SwitchGame = require('../chooseGame/switchGame');
 const storiesData = require('./storiesGameData');
 
 const INTENT_ID = storiesData.INTENT_ID;
-const LIST_STORIES_SENTENCES = storiesData.LIST_STORIES_SENTENCES;
 const STORIES = storiesData.STORIES;
+const STORIES_SUGGESTIONS = storiesData.STORIES_SUGGESTIONS;
+const AFTER_STORY_SUGGESTIONS = storiesData.AFTER_STORY_SUGGESTIONS;
+const LIST_STORIES_SENTENCES = storiesData.LIST_STORIES_SENTENCES;
 const ARGS = storiesData.ARGS;
 const CHOICES = storiesData.CHOICES;
 
@@ -33,19 +35,25 @@ class StoriesGame extends SimpleIntent {
     /** @param app {ApiAiApp}
      * @param storyCode {string|object=} */
     static chooseAndTellAStory(app, storyCode) {
-        let availableStories, pickedStory;
+        // Retrieve stories
+        let availableStories;
         if (app.data.stories && app.data.stories.length) {
+            // remaining stories
             availableStories = app.data.stories.slice();
         } else {
+            // first time or stories depleted
             availableStories = Object.keys(STORIES).slice();
         }
 
+        // Pick a story
         storyCode = storyCode || utils.randomFromArray(availableStories);
         utils.removeFromArray(availableStories, storyCode);
+        const pickedStory = STORIES[storyCode];
 
-        pickedStory = STORIES[storyCode];
-
-        app.ask(`<speak>${pickedStory.content}<break/> Do you want to ear another story ?</speak>`);
+        // Speak time
+        utils.askWithSuggestions(app,
+            `<speak>${pickedStory.content}<break/> Do you want to ear another story ?</speak>`,
+            AFTER_STORY_SUGGESTIONS);
 
         app.data.lastToldStory = storyCode;
         app.data.stories = availableStories;
@@ -70,8 +78,8 @@ class StoriesGame extends SimpleIntent {
     /** @param app {ApiAiApp} */
     static listStories(app) {
         let text = utils.randomFromArray(LIST_STORIES_SENTENCES);
-        Object.values(STORIES).forEach(s => text += `<p>${s.title}</p>`);
-        app.ask(`<speak>${text}</speak>`);
+        STORIES_SUGGESTIONS.forEach(s => text += `<p>${s}</p>`);
+        utils.askWithSuggestions(app, `<speak>${text}</speak>`, STORIES_SUGGESTIONS);
     }
 }
 
