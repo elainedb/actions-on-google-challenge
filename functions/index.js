@@ -15,6 +15,7 @@ const Repeat = require('./hooks/animals/repeat');
 const DontKnow = require('./hooks/animals/dontKnow');
 const AgainYes = require('./hooks/animals/againYes');
 const AgainNo = require('./hooks/animals/againNo');
+const HintIntent = require('./hooks/animals/hintIntent');
 const Pokemon = require('./hooks/easteregg/pokemon');
 const StoriesGame = require('./hooks/stories/storiesGame');
 
@@ -40,6 +41,7 @@ exports.babysitter = functions.https.onRequest((request, response) => {
         new DontKnow(),
         new AgainYes(),
         new AgainNo(),
+        new HintIntent(),
         new ChooseSong(),
         new ListSongs(),
         new SameSong(),
