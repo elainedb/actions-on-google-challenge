@@ -21,7 +21,6 @@ class HintIntent extends SimpleIntent {
     trigger(app) {
 
         let hintManager = new HintManager();
-        console.log(app);
         let hintSentenceBuilder = new HintSentenceBuilder(app);
 
         let hintIndex = hintManager.incrementHintCounter(app.data.answer);

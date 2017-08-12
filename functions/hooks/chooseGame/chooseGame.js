@@ -7,6 +7,8 @@ const animalData = require('../animals/animalData');
 const songData = require('../song/songData');
 const StoriesGame = require('../stories/storiesGame');
 
+const AnimalDataManager = require('../animals/animalsDataManager');
+
 const INTENT_ID = 'intent.auntie.choosegame';
 
 
@@ -46,6 +48,8 @@ class ChooseGame extends SimpleIntent {
 
             let randomAnswer = utils.getRandomAnswer(answers);
             app.data.answer = randomAnswer;
+
+            let manager = new AnimalDataManager(app, randomAnswer);
 
             app.ask(`<speak>${intro} ${question} <audio src="${randomAnswer.src.sound}"></audio></speak>`);
         } else if (app.getArgument(chooseGameData.ENTITY_GAME) === ENTITY_GAME_SING_A_SONG) {

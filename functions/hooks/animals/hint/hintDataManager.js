@@ -6,11 +6,19 @@ const INTROS_PROP = 'intros';
 module.exports = class HintDataManager extends AbstractDataManager {
 
     constructor(app, intros) {
-        super(app, CLASS_PREFIX);
+        super(app, CLASS_PREFIX, [
+            [INTROS_PROP, intros]
+        ]);
 
-        // equivalent to if (this.getData(INTROS_PROP) == false) this.setData(INTROS_PROP, intro);
-        // or if no data found for INTROS_PROP, set one :)
-        this.getData(INTROS_PROP) || this.setData(INTROS_PROP, intros);
+        HintDataManager._instance = this;
+    }
+
+    static getInstance() {
+        if (HintDataManager._instance) {
+            return HintDataManager._instance;
+        }
+
+        throw 'HintDataManager never instanciate, call a new first to initialize the builder !';
     }
 
     getIntrosAvailable() {

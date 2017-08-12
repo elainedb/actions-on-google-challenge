@@ -10,7 +10,7 @@ const Welcome = require('./hooks/welcome');
 const ChooseGame = require('./hooks/chooseGame/chooseGame');
 const SwitchGame = require('./hooks/chooseGame/switchGame');
 
-const SoundsAnswer = require('./hooks/animals/soundsAnswer');
+const SoundsAnswerIntent = require('./hooks/animals/game/soundsAnswerIntent');
 const Repeat = require('./hooks/animals/repeat');
 const DontKnow = require('./hooks/animals/dontKnow');
 const AgainYes = require('./hooks/animals/againYes');
@@ -27,15 +27,15 @@ const OtherSong = require('./hooks/song/otherSong');
 exports.babysitter = functions.https.onRequest((request, response) => {
 
     const app = new App({request, response});
-    console.log('Request headers: ' + JSON.stringify(request.headers));
-    console.log('Request body: ' + JSON.stringify(request.body));
+    console.log('### index : Request headers: ' + JSON.stringify(request.headers));
+    console.log('### index : Request body: ' + JSON.stringify(request.body));
 
     let actionMap = new Map();
     [
         new Welcome(),
         new ChooseGame(),
         new SwitchGame(),
-        new SoundsAnswer(),
+        new SoundsAnswerIntent(),
         new Pokemon(),
         new Repeat(),
         new DontKnow(),

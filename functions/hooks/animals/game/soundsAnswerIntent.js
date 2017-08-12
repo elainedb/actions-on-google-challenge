@@ -1,37 +1,81 @@
 'use strict';
 
 
-const SimpleIntent = require('../shared/simpleIntent');
-const utils = require('../shared/_utils');
-const animalData = require('./animalData');
+const SimpleIntent = require('../../shared/simpleIntent');
+const utils = require('../../shared/_utils');
+
+const AnimalDataManager = require('../animalsDataManager');
+const AnimalSentencesBuilder = require('../animalsSentencesBuilder');
+const animalData = require('../animalData');
+
+const SoundsManager = require('./soundsManager');
+const SoundsDataManager = require('./soundsDataManager');
+const SoundsSentencesBuilder = require('./soundsSentencesBuilder');
+
+const HintManager = require('../hint/hintManager');
+const HintSentenceBuilder = require('../hint/hintSentencesBuilder');
 
 const INTENT_ID = 'intent.auntie.game.animal';
 
-const ENTITY_ANIMAL = "animal";
-const CONTEXT_ANIMAL_SOUNDS = "context_game_animal";
-const CONTEXT_ANIMAL_SOUNDS_AGAIN = "context_game_animal_play_again";
+const ENTITY_ANIMAL = 'animal';
+const CONTEXT_ANIMAL_SOUNDS = 'context_game_animal';
+const CONTEXT_ANIMAL_SOUNDS_AGAIN = 'context_game_animal_play_again';
 
 const MAX_ROUND = 3;
 
+const anotherTriesSentences = require('./soundsSentencesBuilder').anotherTries;
 
-class AnimalSoundsAnswer extends SimpleIntent {
+class AnimalSoundsAnswerIntent extends SimpleIntent {
 
     constructor() {
         super(INTENT_ID);
     }
 
     trigger(app) {
+
+        console.log('*** AnimalSoundsAnswerIntent : instanciate dependencies for AnimalSoundsAnswerIntent.trigger');
+        let animalDataManager = new AnimalDataManager(app);
+
+        if (!animalDataManager.getAnswer()) {
+            throw 'Oooops ! No soundsAnswerIntent trigger but chooseGame never called for animal game :\'(';
+        }
+
+        let soundsDataManager = new SoundsDataManager(app, anotherTriesSentences);
+        let soundsManager = new SoundsManager();
+        let soundsSentencesBuilder = new SoundsSentencesBuilder();
+
+        let userAnswer = app.getArgument(ENTITY_ANIMAL);
+        if (soundsManager.isValidAnswer(userAnswer)) {
+            app.ask(soundsSentencesBuilder.getYouWooon());
+        } else if (soundsManager.hasOtherTry()) {
+            let hintManager = new HintManager();
+            let hintSentenceBuilder = new HintSentenceBuilder(app);
+
+            let hintIndex = hintManager.incrementHintCounter(app.data.answer);
+            let hint = hintSentenceBuilder.getHint(soundsDataManager.getValidAnimal(), hintIndex);
+            let anotherTry = soundsSentencesBuilder.getAnotherTry();
+
+            let animalsSentencesBuilder = new AnimalSentencesBuilder();
+            let question = animalsSentencesBuilder.getQuestion();
+            
+            app.ask(`<speak>
+                <p>${hint} ${anotherTry}</p>
+                <p>${question}</p>
+            </speak>`);
+        }
+
+    }
+
+    trigger_old(app) {
         let resultMessage;
         let context = app.getContext(CONTEXT_ANIMAL_SOUNDS);
         let previousRound = context.parameters.round;
         let previousPoints = context.parameters.points;
         let actualPoints = previousPoints;
         let goodAnswer = app.data.answer;
-        let userAnswer = app.getArgument(ENTITY_ANIMAL);
+        
 
         // if good answer
-        console.log('YOOOOOOOOOOOOOO');
-        console.log(goodAnswer, userAnswer);
         if (goodAnswer.name === userAnswer) {
             actualPoints = previousPoints + 1;
             resultMessage = `Good job! It was indeed ${utils.article(goodAnswer.name)} ${goodAnswer.name}`;
@@ -96,4 +140,4 @@ class AnimalSoundsAnswer extends SimpleIntent {
     }
 }
 
-module.exports = AnimalSoundsAnswer;
+module.exports = AnimalSoundsAnswerIntent;
