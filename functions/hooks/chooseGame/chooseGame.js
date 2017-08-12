@@ -6,6 +6,7 @@ const chooseGameData = require('./chooseGameData');
 const animalData = require('../animals/animalData');
 const songData = require('../song/songData');
 const StoriesGame = require('../stories/storiesGame');
+const ChooseSong = require('../song/chooseSong');
 
 const AnimalDataManager = require('../animals/animalsDataManager');
 
@@ -53,11 +54,8 @@ class ChooseGame extends SimpleIntent {
 
             app.ask(`<speak>${intro} ${question} <audio src="${randomAnswer.src.sound}"></audio></speak>`);
         } else if (app.getArgument(chooseGameData.ENTITY_GAME) === ENTITY_GAME_SING_A_SONG) {
-            let intro = utils.randomFromArray(chooseGameData.SENTENCES) + app.getArgument(chooseGameData.ENTITY_GAME) + ". ";
-            let question = utils.randomFromArray(songData.SENTENCES_SONG);
-
             app.setContext(CONTEXT_SONG, utils.DEFAULT_LIFESPAN, {});
-            app.ask(`<speak>${intro} ${question}</speak>`);
+            ChooseSong.songsIntro(app);
         } else if (app.getArgument(chooseGameData.ENTITY_GAME) === ENTITY_GAME_TELL_A_STORY) {
             app.setContext(CONTEXT_STORY, utils.DEFAULT_LIFESPAN, {});
             StoriesGame.listStories(app);

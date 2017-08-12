@@ -114,23 +114,7 @@ exports.getAnimalList = (app, referenceList) => {
 }
 
 exports.getSong = function(app, chosenSong, songs, songsSrc) {
-    let counter = 0;
-    for (let song of songs.values()) {
-        if (song === chosenSong) {
-            break;
-        }
-        counter++;
-    }
-
-    let counter2 = 0;
-    let chosenSongSrc = '';
-    for (let songSrc of songsSrc) {
-        if (counter2 === counter) {
-            chosenSongSrc = songSrc;
-            break;
-        }
-        counter2++;
-    }
+    let chosenSongSrc = chosenSong.content;
 
     app.data.song = `<audio src="${chosenSongSrc}"></audio>`;
 
