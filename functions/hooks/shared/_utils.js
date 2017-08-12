@@ -26,6 +26,8 @@ exports.randomFromArray = function (array, exclusions) {
         do {
             picked = array[Math.floor(Math.random() * array.length)];
         } while (exclusionsArray.includes(picked) && limit-- >= 0);
+    } else {
+        picked = array[Math.floor(Math.random() * array.length)];
     }
 
     return picked;
