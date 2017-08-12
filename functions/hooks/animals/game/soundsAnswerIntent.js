@@ -1,6 +1,5 @@
 'use strict';
 
-
 const SimpleIntent = require('../../shared/simpleIntent');
 const utils = require('../../shared/_utils');
 
@@ -9,7 +8,6 @@ const AnimalSentencesBuilder = require('../animalsSentencesBuilder');
 const animalData = require('../animalData');
 
 const SoundsManager = require('./soundsManager');
-const SoundsDataManager = require('./soundsDataManager');
 const SoundsSentencesBuilder = require('./soundsSentencesBuilder');
 
 const HintManager = require('../hint/hintManager');
@@ -21,10 +19,6 @@ const ENTITY_ANIMAL = 'animal';
 const CONTEXT_ANIMAL_SOUNDS = 'context_game_animal';
 const CONTEXT_ANIMAL_SOUNDS_AGAIN = 'context_game_animal_play_again';
 
-const MAX_ROUND = 3;
-
-const anotherTriesSentences = require('./soundsSentencesBuilder').anotherTries;
-
 class AnimalSoundsAnswerIntent extends SimpleIntent {
 
     constructor() {
@@ -33,37 +27,47 @@ class AnimalSoundsAnswerIntent extends SimpleIntent {
 
     trigger(app) {
 
-        console.log('*** AnimalSoundsAnswerIntent : instanciate dependencies for AnimalSoundsAnswerIntent.trigger');
+        console.log('+++ AnimalSoundsAnswerIntent : instanciate dependencies for AnimalSoundsAnswerIntent.trigger');
         let animalDataManager = new AnimalDataManager(app);
 
         if (!animalDataManager.getAnswer()) {
             throw 'Oooops ! No soundsAnswerIntent trigger but chooseGame never called for animal game :\'(';
         }
 
-        let soundsDataManager = new SoundsDataManager(app, anotherTriesSentences);
+        let soundsSentencesBuilder = new SoundsSentencesBuilder(app);
         let soundsManager = new SoundsManager();
-        let soundsSentencesBuilder = new SoundsSentencesBuilder();
+
+        let response;
 
         let userAnswer = app.getArgument(ENTITY_ANIMAL);
         if (soundsManager.isValidAnswer(userAnswer)) {
-            app.ask(soundsSentencesBuilder.getYouWooon());
+            app.setContext(CONTEXT_ANIMAL_SOUNDS_AGAIN, 1, {});
+            response = `<speak>${soundsSentencesBuilder.getYouWooon()}</<peak>`;
         } else if (soundsManager.hasOtherTry()) {
+
+            console.log('+++ AnimalSoundsAnswerIntent : user have another chance to find :)');
+            console.log('+++ AnimalSoundsAnswerIntent : instanciate hints Manager and builder to help him');
             let hintManager = new HintManager();
             let hintSentenceBuilder = new HintSentenceBuilder(app);
 
             let hintIndex = hintManager.incrementHintCounter(app.data.answer);
-            let hint = hintSentenceBuilder.getHint(soundsDataManager.getValidAnimal(), hintIndex);
-            let anotherTry = soundsSentencesBuilder.getAnotherTry();
+            let hint = hintSentenceBuilder.getHint(soundsManager.getValidAnimal(), hintIndex);
 
-            let animalsSentencesBuilder = new AnimalSentencesBuilder();
-            let question = animalsSentencesBuilder.getQuestion();
-            
-            app.ask(`<speak>
-                <p>${hint} ${anotherTry}</p>
-                <p>${question}</p>
-            </speak>`);
+            soundsManager.incrementRound();
+
+            app.setContext(CONTEXT_ANIMAL_SOUNDS);
+            response = `<speak>${hint} ${soundsSentencesBuilder.getAnotherTry()}</speak>`;
+        } else {
+
+            app.setContext(CONTEXT_ANIMAL_SOUNDS_AGAIN, 1, {});
+            response = `<speak>
+                <p>It was the last round ${soundsSentencesBuilder.getAnotherTry()}</p>
+                <p>${soundsSentencesBuilder.getOoopsYouLost()}
+                <p>Do you want to play another game of animal sounds?</p>
+            </speak>`;
         }
 
+        app.ask(response);
     }
 
     trigger_old(app) {
@@ -73,7 +77,7 @@ class AnimalSoundsAnswerIntent extends SimpleIntent {
         let previousPoints = context.parameters.points;
         let actualPoints = previousPoints;
         let goodAnswer = app.data.answer;
-        
+
 
         // if good answer
         if (goodAnswer.name === userAnswer) {

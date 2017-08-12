@@ -1,5 +1,10 @@
 module.exports = class HintManager {
+    
+    /**
+     * @param {AnimalModel} animal the animal with hints
+     */
     incrementHintCounter(animal) {
-        return animal.hintCounter < 3 ? animal.hintCounter++ : animal.hintCounter = 0;
+        // no need to manage 3 possibility Intent should change it response on the third try
+        return animal.hintCounter++;
     }
 }

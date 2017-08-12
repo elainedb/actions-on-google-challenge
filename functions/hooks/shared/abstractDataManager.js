@@ -1,3 +1,5 @@
+const utils = require('../shared/_utils');
+
 module.exports = class AbstractDataManager {
     /**
      * 
@@ -25,11 +27,14 @@ module.exports = class AbstractDataManager {
 
         for (let props of defaultProps) {
             let items = this.getData(props[0]);
-            if (!items || items.length < 1) {
-                this.setData(props[0], props[1]);
-                console.log('save new data : ', props[0], props[1]);
-            } else {
+            if (items) {
                 console.log('keep data from app.data : ', items);
+            } else if (typeof items === 'array' && items.length < 1) {
+                console.log('--- AbstractDataManager : this is an array and its length is 0');
+                this.setData(props[0], utils.reinitArrayIfEmpty(props[1]));
+            } else {
+                console.log('--- AbstractDataManager : this is an object');
+                this.setData(props[0], props[1].clone && props[1].clone() || props[1]);
             }
         }
     }

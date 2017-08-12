@@ -14,10 +14,10 @@ module.exports = class SoundsDataManager  extends AbstractDataManager {
             [TRIES_SENTENCES_PROP, triesSentences],
         ]);
 
-        console.log('*** SoundsDataManager : get instance of , it should be initialize before there ! ! !');
+        console.log('*** SoundsDataManager : get instance of AnimalDataManager, it should be initialize before there ! ! !');
         this.animalDataManager = AnimalDataManager.getInstance();
 
-        console.log('*** SoundsDataManager : save instance of SoundsDataManager with :');
+        console.log('*** SoundsDataManager : save instance of SoundsDataManager');
         SoundsDataManager._instance = this;
     }
 
@@ -35,6 +35,10 @@ module.exports = class SoundsDataManager  extends AbstractDataManager {
 
     getRounds() {
         return this.getData(ROUND_PROP);
+    }
+
+    setRounds(rounds) {
+        this.setData(ROUND_PROP, rounds);
     }
 
     getTriesSentencesAvailable() {

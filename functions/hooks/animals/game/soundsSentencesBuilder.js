@@ -2,14 +2,15 @@ const utils = require('../../shared/_utils');
 
 const SoundsDataManager = require('./soundsDataManager');
 
-exports.anotherTries = [
+const anotherTries = [
     'Oh ! Are you sure ?',
 ];
 
 module.exports = class SoundsSentencesBuilder {
 
-    constructor() {
-        this.soundsDataManager = SoundsDataManager.getInstance();
+    constructor(app) {
+        console.log('*** SoundsSentencesBuilder : instancite SoundsSentencesBuilder');
+        this.soundsDataManager = new SoundsDataManager(app, anotherTries);
     }
 
     getYouWooon() {

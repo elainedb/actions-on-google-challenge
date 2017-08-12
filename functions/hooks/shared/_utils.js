@@ -17,7 +17,7 @@ exports.randomFromArray = function (array, exclusions) {
         return null;
     }
 
-    let picked = array[Math.floor(Math.random() * array.length)];
+    let picked = array[Math.floor(Math.random() * array.length - 1)];
 
     if (exclusions) {
         // pick again while in exclusions
