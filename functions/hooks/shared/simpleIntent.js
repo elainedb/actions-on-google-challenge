@@ -13,8 +13,20 @@ class SimpleIntent {
         throw new Error('Not implemented');
     }
 
+    /**
+     * @param app {ApiAiApp}
+     */
+    safeTrigger(app) {
+        try {
+            this.trigger(app);
+        }
+        catch (e) {
+            console.error(e);
+        }
+    }
+
     register(actionMap) {
-        actionMap.set(this.intentId, this.trigger.bind(this));
+        actionMap.set(this.intentId, this.safeTrigger.bind(this));
     }
 }
 

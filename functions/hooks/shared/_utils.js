@@ -6,22 +6,28 @@ exports.reinitArrayIfEmpty = function (reference, actual) {
 }
 
 /**
- * Pick a random element from an array. The source array is not modified unless removePicked is true, then
- * the picked element is removed from source array
+ * Pick a random element from an array. Additional argument allow to exclude elements to be picked up from array
  *
  * @param array {[]} source array
- * @param removePicked {boolean=}
+ * @param exclusions {*|[]=} elements which should not be picked up
  * @return {*} picked element on null if array is null or empty
  */
-exports.randomFromArray = function (array, removePicked) {
+exports.randomFromArray = function (array, exclusions) {
     if (!array || array.length === 0) {
         return null;
     }
-    const index = Math.floor(Math.random() * array.length);
-    const picked = array[index];
-    if (removePicked) {
-        array.splice(index, 1);
+
+    let picked = array[Math.floor(Math.random() * array.length)];
+
+    if (exclusions) {
+        // pick again while in exclusions
+        const exclusionsArray = exclusions instanceof Array ? exclusions : [exclusions];
+        let limit = 10;
+        do {
+            picked = array[Math.floor(Math.random() * array.length)];
+        } while (exclusionsArray.includes(picked) && limit-- >= 0);
     }
+
     return picked;
 };
 
@@ -54,7 +60,27 @@ exports.removeFromArray = function (array, element) {
  * @return {[]}
  */
 exports.arrayOrDefaults = function (array, fallback) {
-    return (array && array.size) ? array : fallback;
+    return (array && array.length) ? array : fallback;
+};
+
+/**
+ * Shortcut to ask something and display suggestions if display is available
+ *
+ * @param app {ApiAiApp}
+ * @param text {string} ssml including <speak>
+ * @param suggestions {string[]}
+ * @param noInputs {Array<string>=} ask noInputs
+ * @return {Object} ask HTTP response.
+ */
+exports.askWithSuggestions = function (app, text, suggestions, noInputs) {
+    if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
+        let richResponse = app.buildRichResponse()
+            .addSimpleResponse(text)
+            .addSuggestions(suggestions);
+        return app.ask(richResponse);
+    } else {
+        return app.ask(text, noInputs);
+    }
 };
 
 /**

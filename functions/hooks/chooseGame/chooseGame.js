@@ -5,6 +5,7 @@ const utils = require('../shared/_utils');
 const chooseGameData = require('./chooseGameData');
 const animalData = require('../animals/animalData');
 const songData = require('../song/songData');
+const StoriesGame = require('../stories/storiesGame');
 
 const INTENT_ID = 'intent.auntie.choosegame';
 
@@ -55,7 +56,7 @@ class ChooseGame extends SimpleIntent {
             app.ask(`<speak>${intro} ${question}</speak>`);
         } else if (app.getArgument(chooseGameData.ENTITY_GAME) === ENTITY_GAME_TELL_A_STORY) {
             app.setContext(CONTEXT_STORY, utils.DEFAULT_LIFESPAN, {});
-            app.ask('Tell a story is work in progress. What do you want to play?');
+            StoriesGame.listStories(app);
         } else {
             app.ask('entity_game, you should not be here... you said ' + app.getArgument(chooseGameData.ENTITY_GAME) + '. What do you want to play?');
         }
