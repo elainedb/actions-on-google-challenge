@@ -1,6 +1,10 @@
 'use strict';
 exports.DEFAULT_LIFESPAN = 5;
 
+exports.reinitArrayIfEmpty = function (reference, actual) {
+    return actual && actual.length > 1 && [... actual] || [... reference];
+}
+
 /**
  * Pick a random element from an array. The source array is not modified unless removePicked is true, then
  * the picked element is removed from source array

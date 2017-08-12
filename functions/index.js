@@ -15,7 +15,7 @@ const Repeat = require('./hooks/animals/repeat');
 const DontKnow = require('./hooks/animals/dontKnow');
 const AgainYes = require('./hooks/animals/againYes');
 const AgainNo = require('./hooks/animals/againNo');
-const HintIntent = require('./hooks/animals/hintIntent');
+const HintIntent = require('./hooks/animals/hint/hintIntent');
 const Pokemon = require('./hooks/easteregg/pokemon');
 const StoriesGame = require('./hooks/stories/storiesGame');
 
