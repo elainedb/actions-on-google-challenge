@@ -12,11 +12,11 @@ exports.SENTENCES_SONG_SING = [
 ];
 
 exports.END_SENTENCES_SONG = [
-    "Nice singing!",
-    "You have a really nice voice",
-    "I really like the way you sing!",
-    "Cool singing!",
-    "That was cool!"
+    `Nice singing! <break time="1s"/>`,
+    `You have a really nice voice <break time="1s"/>`,
+    `I really like the way you sing! <break time="1s"/>`,
+    `Cool singing! <break time="1s"/>`,
+    `That was cool! <break time="1s"/>`
 ];
 
 const ENTITY_SPIDER = "itsy bitsy spider";
@@ -49,8 +49,19 @@ exports.SONGS2 = {
     }
 };
 
-exports.SONGS_SUGGESTIONS = Object.values(exports.SONGS2).map(s => s.title);
+const SONGS_SUGGESTIONS = Object.values(exports.SONGS2).map(s => s.title);
+
+exports.SONGS_SUGGESTIONS = SONGS_SUGGESTIONS;
 exports.SONGS_SUGGESTIONS_SHORT = Object.values(exports.SONGS2).map(s => s.shortTitle);
+
+exports.NO_INPUT_SUGGESTIONS = [
+    "I did not get that, you can choose between " + SONGS_SUGGESTIONS.toString(),
+    "Please choose a song: " + SONGS_SUGGESTIONS.toString()
+];
+
+exports.NO_INPUT_SUGGESTIONS_END = [
+    "Do you want to sing the same song again, another song or do you want to play another game?"
+];
 
 exports.SONGS_SRC = new Set([
                             'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/songs/casimps1_-_Itsy_Bitsy_Spider.mp3',

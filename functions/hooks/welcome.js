@@ -12,7 +12,7 @@ const DEFAULT_LIFESPAN = 5;
 const WELCOME_SENTENCES = [
     "Hi little one! I am your cool auntie.",
     "Hello there, glad to hear you.",
-    "Hi again, I hope you are doing great.",
+    "Hi! I hope you are doing great.",
 ];
 
 class Welcome extends SimpleIntent {

@@ -14,6 +14,8 @@ const DEFAULT_LIFESPAN = 5;
 const SONGS_SUGGESTIONS = songData.SONGS_SUGGESTIONS;
 const SONGS_SUGGESTIONS_SHORT = songData.SONGS_SUGGESTIONS_SHORT;
 const SONGS2 = songData.SONGS2;
+const NO_INPUT_SUGGESTIONS = songData.NO_INPUT_SUGGESTIONS;
+const NO_INPUT_SUGGESTIONS_END = songData.NO_INPUT_SUGGESTIONS_END;
 
 const ENTITY_SONG = "song";
 
@@ -41,7 +43,7 @@ class ChooseSong extends SimpleIntent {
             .addSuggestions(['Again!', 'Another', 'Play another game'])
             );
         } else {
-            app.ask(fullResponse);
+            app.ask(fullResponse, NO_INPUT_SUGGESTIONS_END);
         }
     }
 
@@ -52,7 +54,7 @@ class ChooseSong extends SimpleIntent {
         let text = `${intro} ${question}`;
 
         SONGS_SUGGESTIONS.forEach(s => text += `<p>${s}</p>`);
-        utils.askWithSuggestions(app, `<speak>${text}</speak>`, `${intro} ${question}`, SONGS_SUGGESTIONS_SHORT);
+        utils.askWithSuggestions(app, `<speak>${text}</speak>`, `${intro} ${question}`, SONGS_SUGGESTIONS_SHORT, NO_INPUT_SUGGESTIONS);
         // app.ask(`<speak>${intro} ${question}</speak>`);
     }
 }

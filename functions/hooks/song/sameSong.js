@@ -12,6 +12,8 @@ const DEFAULT_LIFESPAN = 5;
 
 const ENTITY_SONG = "song";
 
+const NO_INPUT_SUGGESTIONS_END = songData.NO_INPUT_SUGGESTIONS_END;
+
 class SameSong extends SimpleIntent {
 
     constructor() {
@@ -33,7 +35,7 @@ class SameSong extends SimpleIntent {
             .addSuggestions(['Again!', 'Another', 'Play another game'])
             );
         } else {
-            app.ask(fullResponse);
+            app.ask(fullResponse, NO_INPUT_SUGGESTIONS_END);
         }
     }
 }
