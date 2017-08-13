@@ -19,13 +19,15 @@ const ENTITY_ANIMAL = 'animal';
 const CONTEXT_ANIMAL_SOUNDS = 'context_game_animal';
 const CONTEXT_ANIMAL_SOUNDS_AGAIN = 'context_game_animal_play_again';
 
+const MAX_ROUND = 5;
+
 class AnimalSoundsAnswerIntent extends SimpleIntent {
 
     constructor() {
         super(INTENT_ID);
     }
 
-    trigger(app) {
+    trigger_new(app) {
 
         console.log('+++ AnimalSoundsAnswerIntent : instanciate dependencies for AnimalSoundsAnswerIntent.trigger');
         let animalDataManager = new AnimalDataManager(app);
@@ -70,21 +72,26 @@ class AnimalSoundsAnswerIntent extends SimpleIntent {
         app.ask(response);
     }
 
-    trigger_old(app) {
+    trigger(app) {
         let resultMessage;
         let context = app.getContext(CONTEXT_ANIMAL_SOUNDS);
         let previousRound = context.parameters.round;
         let previousPoints = context.parameters.points;
         let actualPoints = previousPoints;
         let goodAnswer = app.data.answer;
+        let userAnswer = app.getArgument(ENTITY_ANIMAL);
 
-
+// https://freesound.org/people/rhodesmas/sounds/342756/
+// https://freesound.org/people/rhodesmas/sounds/322930/
         // if good answer
         if (goodAnswer.name === userAnswer) {
             actualPoints = previousPoints + 1;
-            resultMessage = `Good job! It was indeed ${utils.article(goodAnswer.name)} ${goodAnswer.name}`;
+            // resultMessage = `Good job! It was indeed ${utils.article(goodAnswer.name)} ${goodAnswer.name}`;
+            resultMessage = `<audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/322930__rhodesmas__success-03.wav"></audio> <break time="500ms"/>  
+            ${utils.randomFromArray(animalData.SENTENCES_ANIMAL_SOUNDS_END)} <audio src="${goodAnswer.src.sound}"></audio> Again! <audio src="${goodAnswer.src.sound}"></audio>`;
         } else {
-            resultMessage = `Wrong answer. It was ${utils.article(goodAnswer.name)} ${goodAnswer.name}`;
+            resultMessage = `<audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/342756__rhodesmas__failure-01.wav"></audio> <break time="500ms"/> 
+            Wrong answer. It was ${utils.article(goodAnswer.name)} ${goodAnswer.name}`;
         }
 
         // animal next round
@@ -115,7 +122,7 @@ class AnimalSoundsAnswerIntent extends SimpleIntent {
 
             if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
                 let richResponse = app.buildRichResponse()
-                    .addSimpleResponse(`<speak>${resultMessage}.</speak>`)
+                    .addSimpleResponse(`<speak>${resultMessage}</speak>`)
                     .addBasicCard(
                         app.buildBasicCard(`Picture: ${goodAnswer.name}.`)
                             .setImage(goodAnswer.src.img, "img")
@@ -127,10 +134,11 @@ class AnimalSoundsAnswerIntent extends SimpleIntent {
             }
 
         } else {
-            let resultSoFar = `You now have: ${actualPoints}<sub alias="over">/</sub>${actualRound} good answers. Next round!<break/> ${app.data.question}`;
+            // let resultSoFar = `You now have: ${actualPoints}<sub alias="over">/</sub>${actualRound} good answers. Next round!<break/> ${app.data.question}`;
+            let resultSoFar = `Next round!<break/> ${app.data.question}`;
             if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
                 let richResponse = app.buildRichResponse()
-                    .addSimpleResponse(`<speak>${resultMessage}.</speak>`)
+                    .addSimpleResponse(`<speak>${resultMessage}</speak>`)
                     .addBasicCard(
                         app.buildBasicCard(`Picture: ${goodAnswer.name}.`)
                             .setImage(goodAnswer.src.img, "img")

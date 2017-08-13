@@ -1,9 +1,15 @@
 'use strict';
 
 exports.SENTENCES_ANIMAL_SOUNDS = [
-    "Do you know which animal makes this sound?",
-    "Do you recognize this animal?",
-    "Can you guess which animal makes this sound?"
+    "Which animal makes this sound?",
+    "Try and guess which animal makes this sound"
+];
+
+exports.SENTENCES_ANIMAL_SOUNDS_END = [
+    "You're right! Say the sound with me right now! ",
+    "Awesome! You got it! Make the sound with me! ",
+    "Right answer, you're the best! Let's make the sound together! ",
+    "You're really good! Say the sound with me now!"
 ];
 
 const ENTITY_DOG = "dog";
@@ -75,13 +81,13 @@ class AnimalModel {
      * @param {string} info
      */
     constructor(name, img, sound, hints, info) {
-        sound = name !== ENTITY_PENGUIN ? STORAGE_PREFIX + name + '/' + sound : STORAGE_PREFIX + 'pinguin' + '/' + sound;
+        sound = STORAGE_PREFIX + name + '/' + sound;
         img = img || '001.jpg';
         info = info || name.charAt(0) + name.slice(1);
 
         this.name = name;
         this.src = {
-            img: STORAGE_PREFIX_IMG + name + '/' + name + '001.png',
+            img: STORAGE_PREFIX_IMG + name + '/' + name + img,
             sound:  sound
         };
         this.hints = hints;
@@ -123,7 +129,7 @@ exports.ANIMALS_OBJECTS = [
         'Despite of what people think, he is very clever !',
         'He is still used to send message by air.'
     ]),
-    new AnimalModel(ENTITY_BEAR, null, 'bear1.mp3', [
+    new AnimalModel(ENTITY_BEAR, '001.JPG', 'bear1.mp3', [
         'He likes honey.',
         'Your Teddy might be one ?',
         'He is brown and lives in forest.'
@@ -173,9 +179,9 @@ exports.ANIMALS_OBJECTS = [
         'Today, we climb on their back to go for walks',
         'People who knows how to ride them well are called riders'
     ]),
-    new AnimalModel(ENTITY_HYENA, null, 'hyena1.mp3', []),
-    new AnimalModel(ENTITY_JAGUAR, null, 'jaguar1.mp3', []),
-    new AnimalModel(ENTITY_LEOPARD, null, 'leopard1.mp3', []),
+    // new AnimalModel(ENTITY_HYENA, null, 'hyena1.mp3', []),
+    // new AnimalModel(ENTITY_JAGUAR, null, 'jaguar1.mp3', []),
+    // new AnimalModel(ENTITY_LEOPARD, null, 'leopard1.mp3', []),
     new AnimalModel(ENTITY_LION, null, 'lion1.mp3', [
         'it live in savana',
         'Its mane forms a crown around his head',
@@ -188,14 +194,14 @@ exports.ANIMALS_OBJECTS = [
         'it lives at nigth and you see it by its luminous eyes',
         'its noise is often represents by "cuckoo"'
     ]),
-    new AnimalModel(ENTITY_PARROT, null, 'parrot1.mp3', []),
+    // new AnimalModel(ENTITY_PARROT, null, 'parrot1.mp3', []),
     new AnimalModel(ENTITY_PEACOCK, null, 'peacock1.mp3', []),
     new AnimalModel(ENTITY_PIG, null, 'pig1.mp3', [
         'It is pink and round',
         'it loves rolling in mud',
         'It has a cork tail'
     ]),
-    new AnimalModel(ENTITY_PENGUIN, null, 'penguin1.mp3', []),
+    // new AnimalModel(ENTITY_PENGUIN, null, 'penguin1.mp3', []),
     new AnimalModel(ENTITY_PUMA, null, 'puma1.mp3', [], 'Puma_(genus)'),
     new AnimalModel(ENTITY_ROOSTER, null, 'rooster1.mp3', []),
     new AnimalModel(ENTITY_SEAGULL, null, 'seagull1.mp3', []),

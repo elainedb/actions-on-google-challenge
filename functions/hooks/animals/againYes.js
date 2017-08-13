@@ -28,10 +28,8 @@ class AgainYes extends SimpleIntent {
             points: 0
         });
 
-        let randomAnswer = utils.getRandomAnswer(app, answers);
+        let randomAnswer = utils.getRandomAnswer(answers);
         app.data.answer = randomAnswer;
-
-        let manager = new AnimalDataManager(app, randomAnswer);
 
         app.ask(`<speak>${intro} ${question} <audio src="${randomAnswer.src.sound}"></audio></speak>`);
     }
