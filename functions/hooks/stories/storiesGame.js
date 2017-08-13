@@ -12,6 +12,7 @@ const STORIES = storiesData.STORIES;
 const STORIES_SUGGESTIONS = storiesData.STORIES_SUGGESTIONS;
 const AFTER_STORY_SUGGESTIONS = storiesData.AFTER_STORY_SUGGESTIONS;
 const LIST_STORIES_SENTENCES = storiesData.LIST_STORIES_SENTENCES;
+const LIST_STORIES_END_SENTENCES = storiesData.LIST_STORIES_END_SENTENCES;
 const ARGS = storiesData.ARGS;
 const CHOICES = storiesData.CHOICES;
 
@@ -55,7 +56,7 @@ class StoriesGame extends SimpleIntent {
 
         // Speak time
         utils.askWithSuggestions(app,
-            `<speak>${pickedStory.content}<break/> Do you want to ear another story ?</speak>`,
+            `<speak>${pickedStory.content}<break/> ${utils.randomFromArray(LIST_STORIES_END_SENTENCES)}</speak>`,
             AFTER_STORY_SUGGESTIONS);
     }
 

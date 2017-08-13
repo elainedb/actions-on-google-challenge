@@ -8,7 +8,15 @@ exports.ARGS = {
 };
 
 exports.LIST_STORIES_SENTENCES = [
-    'Great! Here are the available stories: '
+    'Great! Here are the available stories: ',
+    'Awesome! I know the following stories: ',
+    'Story time! Which story do you want to hear? '
+];
+
+exports.LIST_STORIES_END_SENTENCES = [
+    "Wasn't that a great story? Do you want to hear it again, or hear another one?",
+    'What a nice story! Do you want to hear it again, or hear another one?',
+    'I really like that one! Do you want to hear it again, or hear another one?'
 ];
 
 // attribute:
