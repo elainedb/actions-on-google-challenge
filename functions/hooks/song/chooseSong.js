@@ -8,9 +8,11 @@ const chooseGameData = require('../chooseGame/chooseGameData');
 const INTENT_ID = 'intent.auntie.game.song.choose';
 
 const CONTEXT_CHOOSE_GAME = "context_choose_game";
+const CONTEXT_SONG = "context_game_song";
 const DEFAULT_LIFESPAN = 5;
 
 const SONGS_SUGGESTIONS = songData.SONGS_SUGGESTIONS;
+const SONGS_SUGGESTIONS_SHORT = songData.SONGS_SUGGESTIONS_SHORT;
 const SONGS2 = songData.SONGS2;
 
 const ENTITY_SONG = "song";
@@ -50,7 +52,7 @@ class ChooseSong extends SimpleIntent {
         let text = `${intro} ${question}`;
 
         SONGS_SUGGESTIONS.forEach(s => text += `<p>${s}</p>`);
-        utils.askWithSuggestions(app, `<speak>${intro} ${question}</speak>`, SONGS_SUGGESTIONS);
+        utils.askWithSuggestions(app, `<speak>${text}</speak>`, `${intro} ${question}`, SONGS_SUGGESTIONS_SHORT);
         // app.ask(`<speak>${intro} ${question}</speak>`);
     }
 }

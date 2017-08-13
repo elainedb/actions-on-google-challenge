@@ -1,11 +1,14 @@
 'use strict';
 
 exports.SENTENCES_SONG = [
-    "Ask me to play a song or tell you what songs I know"
+    "Which song do you want to sing? ",
+    "I know the following songs: ",
+    "Here are the available songs: "
 ];
 
 exports.SENTENCES_SONG_SING = [
-    "Sing with me!"
+    "Sing with me!",
+    "Let's sing!"
 ];
 
 exports.END_SENTENCES_SONG = [
@@ -26,23 +29,28 @@ exports.SONGS = new Set([ENTITY_SPIDER, ENTITY_TWINKLE, ENTITY_BINGO, ENTITY_HAP
 exports.SONGS2 = {
     spider: {
         title: 'Itsy Bitsy Spider',
+        shortTitle: 'Itsy Bitsy Spider',
         content: 'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/songs/casimps1_-_Itsy_Bitsy_Spider.mp3'
     },
     twinkle: {
-        title: 'Twinkle Twinkle Little ⭐',
+        title: 'Twinkle Twinkle Little Star',
+        shortTitle: 'Twinkle Twinkle Little ⭐',
         content: 'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/songs/casimps1_-_Twinkle_Twinkle_Little_Star.mp3'
     },
     bingo: {
         title: 'BINGO',
+        shortTitle: 'BINGO',
         content: 'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/songs/casimps1_-_Bingo_(B-I-N-G-O).mp3'
     },
     happy: {
-        title: `Happy and You Know It`,
+        title: `If You're Happy and You Know It`,
+        shortTitle: `Happy and You Know It`,
         content: 'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/songs/casimps1_-_If_You_re_Happy_and_You_Know_It.mp3'
     }
 };
 
 exports.SONGS_SUGGESTIONS = Object.values(exports.SONGS2).map(s => s.title);
+exports.SONGS_SUGGESTIONS_SHORT = Object.values(exports.SONGS2).map(s => s.shortTitle);
 
 exports.SONGS_SRC = new Set([
                             'https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/songs/casimps1_-_Itsy_Bitsy_Spider.mp3',

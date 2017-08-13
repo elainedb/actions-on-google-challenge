@@ -74,10 +74,11 @@ exports.arrayOrDefaults = function (array, fallback) {
  * @param noInputs {Array<string>=} ask noInputs
  * @return {Object} ask HTTP response.
  */
-exports.askWithSuggestions = function (app, text, suggestions, noInputs) {
+exports.askWithSuggestions = function (app, text, textScreen, suggestions, noInputs) {
     if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
         let richResponse = app.buildRichResponse()
-            .addSimpleResponse(text)
+            .addSimpleResponse({speech: text,
+                                displayText: textScreen})
             .addSuggestions(suggestions);
         return app.ask(richResponse);
     } else {

@@ -9,6 +9,7 @@ const ChooseSong = require('../song/chooseSong');
 const INTENT_ID = 'intent.auntie.game.song.end.other_song';
 
 const CONTEXT_CHOOSE_GAME = "context_choose_game";
+const CONTEXT_SONG = "context_game_song";
 const DEFAULT_LIFESPAN = 5;
 
 const ENTITY_SONG = "song";
@@ -20,6 +21,7 @@ class OtherSong extends SimpleIntent {
     }
 
     trigger(app) {
+        app.setContext(CONTEXT_SONG, utils.DEFAULT_LIFESPAN, {});
         ChooseSong.songsIntro(app);
     }
 }

@@ -44,16 +44,16 @@ exports.STORIES = {
         <voice gender="male" variant="2">“Yum... What juicy tender meals they will make!”</voice> <break time="1s"/>
         He chased the two pigs and they ran and hid in their houses.
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/316924__rudmer-rotteveel__footsteps-running-away-fading.wav"></audio>
-        The big bad wolf went to the first house and huffed and puffed and blew the house down in minutes.
+        The big bad wolf went to the first house and huffed <break time="500ms"/> and puffed <break time="500ms"/> and blew the house down in minutes.
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/Inflating%20Balloon-SoundBible.com-893635129.mp3"></audio> <break time="1s"/>
         The frightened little pig ran to the second pig’s house that was made of sticks.
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/316924__rudmer-rotteveel__footsteps-running-away-fading.wav"></audio>
-        The big bad wolf now came to this house and huffed and puffed and blew the house down in hardly any time.
+        The big bad wolf now came to this house and huffed <break time="500ms"/> and puffed <break time="500ms"/> and blew the house down in hardly any time.
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/Balloon%20Blowing%20Up-SoundBible.com-1989230335.mp3"></audio>
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/Inflating%20Balloon-SoundBible.com-893635129.mp3"></audio>
         Now, the two little pigs were terrified and ran to the third pig’s house that was made of bricks.
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/316924__rudmer-rotteveel__footsteps-running-away-fading.wav"></audio>
-        The big bad wolf tried to huff and puff and blow the house down, but he could not.
+        The big bad wolf tried to huff and puff and blow the house down, <break time="500ms"/> but he could not.
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/Balloon%20Blowing%20Up-SoundBible.com-1989230335.mp3"></audio>
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/Inflating%20Balloon-SoundBible.com-893635129.mp3"></audio>
         <audio src="https://storage.googleapis.com/project-2252662783422070807.appspot.com/sounds/effects/Balloon%20Blowing%20Up-SoundBible.com-1989230335.mp3"></audio>

@@ -57,6 +57,7 @@ class StoriesGame extends SimpleIntent {
         // Speak time
         utils.askWithSuggestions(app,
             `<speak>${pickedStory.content}<break/> ${utils.randomFromArray(LIST_STORIES_END_SENTENCES)}</speak>`,
+            `${pickedStory.title}`,
             AFTER_STORY_SUGGESTIONS);
     }
 
@@ -78,9 +79,10 @@ class StoriesGame extends SimpleIntent {
 
     /** @param app {ApiAiApp} */
     static listStories(app) {
-        let text = utils.randomFromArray(LIST_STORIES_SENTENCES);
+        let displayText = utils.randomFromArray(LIST_STORIES_SENTENCES);
+        let text = displayText;
         STORIES_SUGGESTIONS.forEach(s => text += `<p>${s}</p>`);
-        utils.askWithSuggestions(app, `<speak>${text}</speak>`, STORIES_SUGGESTIONS);
+        utils.askWithSuggestions(app, `<speak>${text}</speak>`, `${displayText}`, STORIES_SUGGESTIONS);
     }
 }
 

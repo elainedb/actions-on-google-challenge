@@ -7,6 +7,7 @@ const songData = require('./songData');
 const INTENT_ID = 'intent.auntie.game.song.list';
 
 const CONTEXT_CHOOSE_GAME = "context_choose_game";
+const CONTEXT_SONG = "context_game_song";
 const DEFAULT_LIFESPAN = 5;
 
 const ENTITY_SONG = "song";
@@ -27,6 +28,7 @@ class ListSongs extends SimpleIntent {
             songList = songList.concat(song + ', ');
         }
 
+        app.setContext(CONTEXT_SONG, utils.DEFAULT_LIFESPAN, {});
         app.ask(`<speak> The available songs are: ${songList} Which one would you like to sing? </speak>`);
         
 
