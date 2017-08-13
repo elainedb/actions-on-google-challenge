@@ -123,7 +123,17 @@ exports.STORIES = {
 };
 
 /** @type {string[]} */
-exports.STORIES_SUGGESTIONS = Object.values(exports.STORIES).map(s => s.title);
+const STORIES_SUGGESTIONS = Object.values(exports.STORIES).map(s => s.title);
+exports.STORIES_SUGGESTIONS = STORIES_SUGGESTIONS;
+
+exports.NO_INPUT_SUGGESTIONS = [
+    "I did not get that, you can choose between " + STORIES_SUGGESTIONS.toString(),
+    "Please choose a story: " + STORIES_SUGGESTIONS.toString()
+];
+
+exports.NO_INPUT_SUGGESTIONS_END = [
+    "I did not get that, Do you want to hear the story again, or hear another one?"
+];
 
 exports.AFTER_STORY_SUGGESTIONS = ['Again!', 'Another', 'Play another game'];
 

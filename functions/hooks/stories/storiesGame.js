@@ -15,7 +15,8 @@ const LIST_STORIES_SENTENCES = storiesData.LIST_STORIES_SENTENCES;
 const LIST_STORIES_END_SENTENCES = storiesData.LIST_STORIES_END_SENTENCES;
 const ARGS = storiesData.ARGS;
 const CHOICES = storiesData.CHOICES;
-
+const NO_INPUT_SUGGESTIONS = storiesData.NO_INPUT_SUGGESTIONS;
+const NO_INPUT_SUGGESTIONS_END = storiesData.NO_INPUT_SUGGESTIONS_END;
 
 class StoriesGame extends SimpleIntent {
 
@@ -58,7 +59,7 @@ class StoriesGame extends SimpleIntent {
         utils.askWithSuggestions(app,
             `<speak>${pickedStory.content}<break/> ${utils.randomFromArray(LIST_STORIES_END_SENTENCES)}</speak>`,
             `${pickedStory.title}`,
-            AFTER_STORY_SUGGESTIONS);
+            AFTER_STORY_SUGGESTIONS, NO_INPUT_SUGGESTIONS_END);
     }
 
     /** @param app {ApiAiApp} */
@@ -82,7 +83,7 @@ class StoriesGame extends SimpleIntent {
         let displayText = utils.randomFromArray(LIST_STORIES_SENTENCES);
         let text = displayText;
         STORIES_SUGGESTIONS.forEach(s => text += `<p>${s}</p>`);
-        utils.askWithSuggestions(app, `<speak>${text}</speak>`, `${displayText}`, STORIES_SUGGESTIONS);
+        utils.askWithSuggestions(app, `<speak>${text}</speak>`, `${displayText}`, STORIES_SUGGESTIONS, NO_INPUT_SUGGESTIONS);
     }
 }
 
